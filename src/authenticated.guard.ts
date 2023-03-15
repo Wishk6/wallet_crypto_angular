@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {Router} from '@angular/router';
+import {ActivatedRouteSnapshot,Router,RouterStateSnapshot} from '@angular/router';
 import {AuthenticationService} from "./app/services/authentication.service";
 
 @Injectable({
@@ -9,13 +9,12 @@ export class AuthenticatedGuard {
   constructor(private authService: AuthenticationService,private router: Router) {
   }
 
-  canActivate(): boolean {
+  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
     if (this.authService.isLoggedIn()) {
-      console.log('true');
-      return false;
+      return true;
     } else {
       this.router.navigate(['/login']);
-      return true;
+      return false;
     }
   }
 

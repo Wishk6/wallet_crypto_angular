@@ -7,8 +7,8 @@ import {WalletComponent} from "./components/core/wallet/wallet.component";
 import {GraphicsComponent} from "./components/core/graphics/graphics.component";
 
 const routes: Routes = [
-  {path: 'login',component: AuthenticationComponent,canDeactivate : [AuthenticatedGuard]},
-  {path: '',component: HomeComponent,canActivate: [AuthenticatedGuard]},
+  {path: 'login',component: AuthenticationComponent},
+  {path: 'home',component: HomeComponent,canActivate: [AuthenticatedGuard]},
   {path: 'wallet',component: WalletComponent,canActivate: [AuthenticatedGuard]},
   {path: 'graphics',component: GraphicsComponent,canActivate: [AuthenticatedGuard]},
   {path: '**',redirectTo: 'home'},

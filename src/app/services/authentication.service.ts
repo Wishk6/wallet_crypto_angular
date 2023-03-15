@@ -14,13 +14,11 @@ export class AuthenticationService {
   }
 
   login(email: string,password: string): Observable<string> {
-    return this.http.post<any>(environment.api_url+`authentication/login`,{email,password})
+    return this.http.post<any>(environment.api_url + `authentication/login`,{email,password})
       .pipe(map(data => {
         if (data.token) {
-          localStorage.setItem('wallet_access_token',JSON.stringify(data.token));
-          this.router.navigate(['/home']);
+          return data.token;
         }
-        return data.token;
       }));
   }
 
@@ -29,12 +27,16 @@ export class AuthenticationService {
     this.router.navigate(['/login']);
   }
 
+  /**
+   * Check if the user is logged in, return true if the user is logged in, false otherwise
+   * @return boolean
+   */
   isLoggedIn(): boolean {
 
     const token = localStorage.getItem("wallet_access_token");
 
     if (token !== null) {
-      return (localStorage.getItem("wallet_access_token") !== null) || !this.jwtService.isTokenExpired(token);
+      return !this.jwtService.isTokenExpired(token); // isTokenExpired() return true if token is expired
     } else {
       return false;
     }
