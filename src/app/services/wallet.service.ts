@@ -15,7 +15,7 @@ export class WalletService {
 
 
   getWallets(): Observable<[WalletTableDataModel]> {
-    return this.http.get<any>(environment.api_url + `wallet/all`)
+    return this.http.get<any>(environment.api_url + `wallet`)
       .pipe(map(data => {
           return data.map((WalletItem: WalletTableDataModel) => {
             console.log(WalletItem)

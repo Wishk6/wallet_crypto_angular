@@ -1,27 +1,39 @@
-# CryptoWallet
+## List des tâches à faire :
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.0.
+1. [X] Routing
+2. [X] Data Models
+3. [X] Project Structure
+4. [X] HTTP Interceptor
+5. [X] Authentication Guard
+6. [X] Authentication Service
+7. [X] JWT Service
 
-## Development server
+~
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+2. [ ] Toaster Service
+3. [ ] ThemeComponent et Service
 
-## Code scaffolding
+~
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+1. [ ] Login Component
 
-## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+2. [ ] SideNav Shared Component
 
-## Running unit tests
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+3. [ ] HeaderCrypto Shared Component
 
-## Running end-to-end tests
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+1. [ ] Composant core PortefeuilleComponent
 
-## Further help
+- Composant shared ajoutCryptoComponent
+- Composant shared GenericDataStatisticsComponent
+- Composant shared CryptoDataStatisticsTableComponent
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+1. [ ] Composant core GraphicsComponent
+
+
+2. [ ] Composant core HomeComponent
+
+- Composant shared AnalyseComponent
+- Composant shared GenericDataStatisticsComponent
