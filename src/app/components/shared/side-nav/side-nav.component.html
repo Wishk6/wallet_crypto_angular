@@ -1,0 +1,21 @@
+<mat-drawer-container class="sidenav-container" autosize>
+  <mat-drawer #drawer class="menu-container" mode="side" opened>
+
+
+      <a  [routerLink]="['/home']">Menu</a>
+      <a [routerLink]="['/wallet']">Portefeuille</a>
+      <a  [routerLink]="['/graphics']">Graphiques</a>
+
+      <button>
+        <span (click)="logout()">Logout</span>
+      </button>
+
+  </mat-drawer>
+
+  <div class="example-sidenav-content">
+    <button type="button" (click)="drawer.toggle()">
+    |||
+    </button>
+  </div>
+
+</mat-drawer-container>
