@@ -1,0 +1,12 @@
+.dataTable-container {
+  min-width: fit-content;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  padding: 10px;
+
+  .button-action-wrapper {
+    display: flex;
+    gap:10px;
+    margin: 10px;
+  }
+}

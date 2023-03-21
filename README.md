@@ -11,7 +11,8 @@
 ~
 
 2. [ ] Toaster Service
-3. [ ] ThemeComponent et Service
+3. [ ] ThemeComponent et Servic
+3. [ ] MiddleWare Ping API
 
 ~
 

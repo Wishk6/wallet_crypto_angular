@@ -4,15 +4,25 @@ import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {HTTP_INTERCEPTORS,HttpClientModule} from "@angular/common/http";
 import {JwtModule} from "@auth0/angular-jwt";
-import {AuthenticationComponent} from './components/core/authentication/authentication.component';
-import {HomeComponent} from './components/core/home/home.component';
-import {WalletComponent} from './components/core/wallet/wallet.component';
-import {GraphicsComponent} from './components/core/graphics/graphics.component';
+import {AuthenticationComponent} from './components/views/authentication/authentication.component';
+import {HomeComponent} from './components/views/home/home.component';
+import {WalletComponent} from './components/views/wallet/wallet.component';
+import {GraphicsComponent} from './components/views/graphics/graphics.component';
 import {LottieModule} from 'ngx-lottie';
 import player from 'lottie-web';
 import {environment} from "../environments/environment";
-import { SideNavComponent } from './components/shared/side-nav/side-nav.component';
+import {SideNavComponent} from './components/shared/side-nav/side-nav.component';
 import {ErrorInterceptor} from "./services/error.interceptor";
+import {
+  AddCryptocurrencyComponentComponent
+} from './components/shared/add-cryptocurrency-component/add-cryptocurrency-component.component';
+import {
+  CryptocurrencyTableDataComponent
+} from './components/shared/cryptocurrency-table-data/cryptocurrency-table-data.component';
+import {FormsModule,ReactiveFormsModule} from "@angular/forms";
+import {MatTableModule} from "@angular/material/table";
+import {MatInputModule} from "@angular/material/input";
+import {MatIconModule} from "@angular/material/icon";
 
 export function tokenGetter() {
   return localStorage.getItem("wallet_access_token");
@@ -28,10 +38,12 @@ export function playerFactory() {
     AuthenticationComponent,
     HomeComponent,
     WalletComponent,
-    GraphicsComponent
+    GraphicsComponent,
   ],
   imports: [
     SideNavComponent,
+    CryptocurrencyTableDataComponent,
+    AddCryptocurrencyComponentComponent,
     BrowserModule,
     AppRoutingModule,
     LottieModule.forRoot({player: playerFactory}),
@@ -43,8 +55,13 @@ export function playerFactory() {
         disallowedRoutes: environment.disallowedRoutes,
       },
     }),
+    FormsModule,
+    ReactiveFormsModule,
+    MatTableModule,
+    MatInputModule,
+    MatIconModule,
   ],
-  providers: [{provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }],
+  providers: [{provide: HTTP_INTERCEPTORS,useClass: ErrorInterceptor,multi: true}],
   bootstrap: [AppComponent]
 })
 export class AppModule {

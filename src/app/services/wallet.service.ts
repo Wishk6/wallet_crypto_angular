@@ -14,11 +14,10 @@ export class WalletService {
   }
 
 
-  getWallets(): Observable<[WalletTableDataModel]> {
+  getWallets(): Observable<WalletTableDataModel[]> {
     return this.http.get<any>(environment.api_url + `wallet`)
       .pipe(map(data => {
           return data.map((WalletItem: WalletTableDataModel) => {
-            console.log(WalletItem)
             return new WalletTableDataModel(WalletItem.id,WalletItem.cryptocurrency_amount,WalletItem.investment_amount,WalletItem.CryptoDataModel);
           })
         }
@@ -28,7 +27,9 @@ export class WalletService {
   createWallet(wallet: WalletModel) {
     return this.http.post<any>(environment.api_url + `wallet`,wallet)
       .pipe(map(data => {
-          console.log(data);
+          if (data) {
+            console.log(data);
+          }
         })
       );
   }
@@ -44,8 +45,12 @@ export class WalletService {
       );
   }
 
-  deleteWallet() {
-
+  deleteWallet(id : number) {
+    return this.http.delete<any>(environment.api_url + `wallet` + `/${id}`)
+      .pipe(map(data => {
+          console.log(data);
+            })
+      );
   }
 
 }

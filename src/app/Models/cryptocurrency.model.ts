@@ -3,7 +3,7 @@ export class CryptoCurrencyModel {
   image: string;
   name: string;
   price: string;
-  price_change_24h: string;
+  price_change_24: string;
   rank: string;
   symbol: string;
 
@@ -12,7 +12,7 @@ export class CryptoCurrencyModel {
     image: string,
     name: string,
     price: string,
-    price_change_24h: string,
+    price_change_24: string,
     rank: string,
     symbol: string,
   ) {
@@ -20,7 +20,7 @@ export class CryptoCurrencyModel {
     this.image = image;
     this.name = name;
     this.price = price;
-    this.price_change_24h = price_change_24h;
+    this.price_change_24 = price_change_24;
     this.rank = rank;
     this.symbol = symbol;
   }

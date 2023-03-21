@@ -1,10 +1,10 @@
 import {NgModule} from '@angular/core';
 import {RouterModule,Routes} from '@angular/router';
 import {AuthenticatedGuard} from "../authenticated.guard";
-import {AuthenticationComponent} from "./components/core/authentication/authentication.component";
-import {HomeComponent} from "./components/core/home/home.component";
-import {WalletComponent} from "./components/core/wallet/wallet.component";
-import {GraphicsComponent} from "./components/core/graphics/graphics.component";
+import {AuthenticationComponent} from "./components/views/authentication/authentication.component";
+import {HomeComponent} from "./components/views/home/home.component";
+import {WalletComponent} from "./components/views/wallet/wallet.component";
+import {GraphicsComponent} from "./components/views/graphics/graphics.component";
 
 const routes: Routes = [
   {path: 'login',component: AuthenticationComponent},

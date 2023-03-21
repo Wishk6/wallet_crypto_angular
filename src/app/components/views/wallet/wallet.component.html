@@ -1,0 +1,11 @@
+<div class="wallet-wrapper">
+  <app-side-nav>
+  </app-side-nav>
+  <div class="component-wrapper">
+    <app-add-cryptocurrency-component (cryptoAddedEvent)="getData()">
+    </app-add-cryptocurrency-component>
+
+    <app-cryptocurrency-table-data [dataArray]="cryptoData" [totalGain]="totalGain" [totalInvest]="totalInvest" (actionButtonEvent)="actions($event)" >
+    </app-cryptocurrency-table-data>
+  </div>
+</div>
