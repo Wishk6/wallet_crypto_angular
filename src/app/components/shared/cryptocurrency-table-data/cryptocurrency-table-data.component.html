@@ -3,6 +3,21 @@
   <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
 </mat-form-field>
 
+<div style="color:white;margin:10px;">
+  Valeure investie :
+  <span class="total-gain">{{totalInvest}} $</span>
+</div>
+
+<div style="color:white;margin:10px;">
+  Total des gains :
+  <span class="total-gain">{{totalGain}} $</span>
+</div>
+
+<div style="color:white;margin:10px;">
+  Total :
+  <span class="total-gain">{{ totalInvest + totalGain}} $</span>
+</div>
+
 <table mat-table class="dataTable-container" [dataSource]="dataArray">
 
   <!-- Position Column -->
@@ -72,18 +87,5 @@
 
   <mat-error *ngIf="dataArray.data.length === 0">No data found</mat-error>
 </table>
-<div style="color:white;margin:10px;">
-  Valeure investie :
-  <span class="total-gain">{{totalInvest}} $</span>
-</div>
 
-<div style="color:white;margin:10px;">
-  Total des gains :
-  <span class="total-gain">{{totalGain}} $</span>
-</div>
-
-<div style="color:white;margin:10px;">
-  Total :
-  <span class="total-gain">{{ totalInvest + totalGain}} $</span>
-</div>
 

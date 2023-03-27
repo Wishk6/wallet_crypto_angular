@@ -13,6 +13,16 @@ export class WalletService {
   constructor(private http: HttpClient) {
   }
 
+  updateCrypto() {
+    return this.http.patch<any>(environment.api_url + `cryptodata`,{})
+      .pipe(map(response => {
+        if (response) {
+          console.log(response);
+        }
+        return response;
+        })
+      );
+  }
 
   getWallets(): Observable<WalletTableDataModel[]> {
     return this.http.get<any>(environment.api_url + `wallet`)
@@ -45,11 +55,11 @@ export class WalletService {
       );
   }
 
-  deleteWallet(id : number) {
+  deleteWallet(id: number) {
     return this.http.delete<any>(environment.api_url + `wallet` + `/${id}`)
       .pipe(map(data => {
           console.log(data);
-            })
+        })
       );
   }
 

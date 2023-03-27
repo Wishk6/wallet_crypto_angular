@@ -19,7 +19,7 @@ export class ErrorInterceptor implements HttpInterceptor {
     });
 
     return next.handle(request).pipe(
-      retry(1),
+      // retry(1),
       catchError((error: any) => {
         if (error.status === 401) {
           if (this.router.url !== '/login') {

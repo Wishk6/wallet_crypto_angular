@@ -21,6 +21,7 @@ export class WalletComponent implements OnInit {
     gain: number;
   }> = new MatTableDataSource();
 
+  lastUpdate: string = '';
   totalGain: number = 0;
   totalInvest: number = 0;
 
@@ -35,7 +36,8 @@ export class WalletComponent implements OnInit {
     this.walletService.getWallets().subscribe(
       (data) => {
         if (data.length !== 0) {
-          // mapper data pour avoir un tableau d'objet qui correpond aux colonnes de la table
+          this.lastUpdate = new Date(data[0].CryptoDataModel.last_update).toLocaleString();
+
           this.cryptoData.data = data.map((item) => {
             return {
               id: item.id,

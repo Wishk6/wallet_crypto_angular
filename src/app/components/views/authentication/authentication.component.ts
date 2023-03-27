@@ -3,6 +3,7 @@ import {AuthenticationService} from "../../../services/authentication.service";
 import {AnimationItem} from 'lottie-web';
 import {AnimationOptions} from 'ngx-lottie';
 import {Router} from "@angular/router";
+import {WalletService} from "../../../services/wallet.service";
 
 @Component({
   selector: 'app-authentication',
@@ -15,7 +16,7 @@ export class AuthenticationComponent implements OnInit {
     path: '/assets/towerAnimation.json',
   };
 
-  constructor(private authService: AuthenticationService,private router: Router) {
+  constructor(private authService: AuthenticationService,private walletService : WalletService,private router: Router) {
   }
 
   ngOnInit(): void {
@@ -32,6 +33,13 @@ export class AuthenticationComponent implements OnInit {
     this.authService.login(email,password).subscribe({
       next: (data) => {
         localStorage.setItem('wallet_access_token',data);
+        this.walletService.updateCrypto().subscribe(
+          (data) => {
+            // if 400 => api down // 401  = > time remaining
+            console.log('updated');
+          }
+        )
+        console.log(data);
         this.router.navigateByUrl('/home');
       },
       error: (error) => {

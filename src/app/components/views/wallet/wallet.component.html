@@ -5,6 +5,11 @@
     <app-add-cryptocurrency-component (cryptoAddedEvent)="getData()">
     </app-add-cryptocurrency-component>
 
+    <div class="last-update">
+      <span>Dernière mise à jour : {{lastUpdate}}</span>
+    </div>
+
+
     <app-cryptocurrency-table-data [dataArray]="cryptoData" [totalGain]="totalGain" [totalInvest]="totalInvest" (actionButtonEvent)="actions($event)" >
     </app-cryptocurrency-table-data>
   </div>
