@@ -10,6 +10,7 @@ import {MatTableDataSource} from "@angular/material/table";
 export class WalletComponent implements OnInit {
 
   cryptoData: MatTableDataSource<{
+    image: string;
     id: string;
     Rang: string;
     name: string;
@@ -40,6 +41,7 @@ export class WalletComponent implements OnInit {
 
           this.cryptoData.data = data.map((item) => {
             return {
+              image: item.CryptoDataModel.image,
               id: item.id,
               Rang: item.CryptoDataModel.rank,
               name: item.CryptoDataModel.name,

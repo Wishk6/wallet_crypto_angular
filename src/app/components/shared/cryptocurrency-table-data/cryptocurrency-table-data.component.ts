@@ -17,11 +17,12 @@ import {NgIf} from "@angular/common";
   styleUrls: ['./cryptocurrency-table-data.component.scss']
 })
 export class CryptocurrencyTableDataComponent {
-  displayedColumns: string[] = ['rang','nom','prix','24h','solde','investDollars','prixAchat','gain','action'];
+  displayedColumns: string[] = ['image','rang','nom','prix','24h','solde','investDollars','prixAchat','gain','action'];
   @Input() totalGain: number = 0;
   @Input() totalInvest: number = 0;
 
   @Input() dataArray: MatTableDataSource<{
+    image: string;
     id: string;
     Rang: string;
     name: string;

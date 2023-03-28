@@ -23,7 +23,7 @@ import {FormsModule,ReactiveFormsModule} from "@angular/forms";
 import {MatTableModule} from "@angular/material/table";
 import {MatInputModule} from "@angular/material/input";
 import {MatIconModule} from "@angular/material/icon";
-
+import { ToastrModule } from 'ngx-toastr';
 export function tokenGetter() {
   return localStorage.getItem("wallet_access_token");
 }
@@ -45,6 +45,7 @@ export function playerFactory() {
     CryptocurrencyTableDataComponent,
     AddCryptocurrencyComponentComponent,
     BrowserModule,
+    ToastrModule.forRoot(), // ToastrModule added
     AppRoutingModule,
     LottieModule.forRoot({player: playerFactory}),
     HttpClientModule,

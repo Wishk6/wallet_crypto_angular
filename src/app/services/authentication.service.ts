@@ -10,6 +10,8 @@ import {environment} from "../../environments/environment";
 })
 export class AuthenticationService {
 
+  userPseudo: string | undefined;
+
   constructor(private http: HttpClient,private jwtService: JwtService,private router: Router) {
   }
 
@@ -17,6 +19,7 @@ export class AuthenticationService {
     return this.http.post<any>(environment.api_url + `authentication/login`,{email,password})
       .pipe(map(data => {
         if (data.token) {
+          this.setUserPseudo(data.token);
           return data.token;
         }
       }));
@@ -41,6 +44,14 @@ export class AuthenticationService {
       return false;
     }
 
+  }
+
+  get userPseudoValue(): string | undefined {
+    return this.userPseudo;
+  }
+
+  setUserPseudo(value: string) {
+    this.userPseudo = this.jwtService.decodeToken(value).pseudo;
   }
 
 }

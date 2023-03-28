@@ -3,11 +3,12 @@ import {HttpEvent,HttpHandler,HttpInterceptor,HttpRequest} from '@angular/common
 import {catchError,Observable,retry,throwError} from 'rxjs';
 import {tokenGetter} from "../app.module";
 import {Router} from "@angular/router";
+import {ToastrService} from "ngx-toastr";
 
 @Injectable()
 export class ErrorInterceptor implements HttpInterceptor {
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private toastr: ToastrService) {
   }
 
   intercept(request: HttpRequest<unknown>,next: HttpHandler): Observable<HttpEvent<unknown>> {
@@ -19,17 +20,23 @@ export class ErrorInterceptor implements HttpInterceptor {
     });
 
     return next.handle(request).pipe(
-      // retry(1),
       catchError((error: any) => {
+        console.log(error,"test",error.status)
         if (error.status === 401) {
           if (this.router.url !== '/login') {
             this.router.navigate(['/login']);
             return throwError(error);
           } else {
-            console.log('error 401');
+            this.toastr.error( error.message);
             return throwError(error);
           }
-        } else {
+        }
+        if (error.status === 403) {
+          this.toastr.info(error.error.message);
+          return throwError(error);
+        }
+        else {
+          this.toastr.error(error.error.message);
           return throwError(error);
         }
       })

@@ -3,22 +3,30 @@
   <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
 </mat-form-field>
 
-<div style="color:white;margin:10px;">
+<div style="margin:10px;">
   Valeure investie :
   <span class="total-gain">{{totalInvest}} $</span>
 </div>
 
-<div style="color:white;margin:10px;">
+<div style="margin:10px;">
   Total des gains :
   <span class="total-gain">{{totalGain}} $</span>
 </div>
 
-<div style="color:white;margin:10px;">
+<div style="margin:10px;">
   Total :
   <span class="total-gain">{{ totalInvest + totalGain}} $</span>
 </div>
 
 <table mat-table class="dataTable-container" [dataSource]="dataArray">
+
+  <!-- image Column -->
+  <ng-container matColumnDef="image">
+    <th mat-header-cell *matHeaderCellDef></th>
+    <td mat-cell *matCellDef="let element">
+    <img class="crypto-logo" width="128" height="128" [src]="element.image">
+    </td>
+  </ng-container>
 
   <!-- Position Column -->
   <ng-container matColumnDef="rang">

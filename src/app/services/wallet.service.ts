@@ -16,9 +16,6 @@ export class WalletService {
   updateCrypto() {
     return this.http.patch<any>(environment.api_url + `cryptodata`,{})
       .pipe(map(response => {
-        if (response) {
-          console.log(response);
-        }
         return response;
         })
       );
@@ -35,6 +32,7 @@ export class WalletService {
   }
 
   createWallet(wallet: WalletModel) {
+    console.log(wallet)
     return this.http.post<any>(environment.api_url + `wallet`,wallet)
       .pipe(map(data => {
           if (data) {

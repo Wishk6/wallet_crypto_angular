@@ -12,17 +12,17 @@
 
   <div>
     <label for="quantity-input">Quantité en Crypto</label>
-    <input id="quantity-input" type="text" formControlName="cryptocurrency_amount"/>
+    <input id="quantity-input" type="number" formControlName="cryptocurrency_amount"/>
   </div>
 
   <div>
     <label for="investment-input">Investissement en dollars</label>
-    <input id="investment-input" type="text" formControlName="investment_amount"/>
+    <input id="investment-input" type="number" formControlName="investment_amount"/>
   </div>
 
   <div>
     <label for="price-input">Prix à l'unité</label>
-    <input id="price-input" type="text" formControlName="unitPrice"/>
+    <input id="price-input" type="number" formControlName="unitPrice"/>
   </div>
 
   <button (click)="addCrypto()">Ajouter</button>
