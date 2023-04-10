@@ -3,6 +3,7 @@ import {availableCrypto} from './data';
 import {WalletService} from "../../../services/wallet.service";
 import {FormControl,FormGroup,ReactiveFormsModule,Validators} from "@angular/forms";
 import {NgForOf} from "@angular/common";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-add-cryptocurrency-component',
@@ -24,9 +25,9 @@ export class AddCryptocurrencyComponentComponent {
     unitPrice: new FormControl<number>(0)
   });
 
-  @Output() cryptoAddedEvent : EventEmitter<any> = new EventEmitter<any>();
+  @Output() cryptoAddedEvent: EventEmitter<any> = new EventEmitter<any>();
 
-  constructor(private walletService: WalletService) {
+  constructor(private walletService: WalletService,private toastr: ToastrService) {
   }
 
   ngOnInit(): void {
@@ -36,14 +37,16 @@ export class AddCryptocurrencyComponentComponent {
   addCrypto() {
     let cryptoData = this.cryptoFormControl.value;
 
-
-
-
     this.walletService.createWallet(cryptoData).subscribe(
-      (data) => {
-        this.cryptoAddedEvent.emit();
-      }
-    )
+      {
+        next: (data) => {
+          console.log(data);
+          this.cryptoAddedEvent.emit();
+        },
+        error: (error) => {
+    this.toastr.error('Error while trying to add crypto, ' + error.error.message);
+        }
+      })
   }
 
 }

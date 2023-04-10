@@ -23,7 +23,10 @@ import {FormsModule,ReactiveFormsModule} from "@angular/forms";
 import {MatTableModule} from "@angular/material/table";
 import {MatInputModule} from "@angular/material/input";
 import {MatIconModule} from "@angular/material/icon";
-import { ToastrModule } from 'ngx-toastr';
+import {ToastrModule} from 'ngx-toastr';
+import {ThemeToggleComponent} from "./components/shared/theme-toggle/theme-toggle.component";
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+
 export function tokenGetter() {
   return localStorage.getItem("wallet_access_token");
 }
@@ -61,6 +64,8 @@ export function playerFactory() {
     MatTableModule,
     MatInputModule,
     MatIconModule,
+    ThemeToggleComponent,
+    BrowserAnimationsModule,
   ],
   providers: [{provide: HTTP_INTERCEPTORS,useClass: ErrorInterceptor,multi: true}],
   bootstrap: [AppComponent]

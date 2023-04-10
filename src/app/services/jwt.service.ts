@@ -17,8 +17,8 @@ export class JwtService {
     return this.jwtHelper.decodeToken(token);
   }
 
-  getTokenExpirationDate(token: string): Date {
-    return <Date>this.jwtHelper.getTokenExpirationDate(token);
-  }
+  // getTokenExpirationDate(token: string): Date {
+  //   return <Date>this.jwtHelper.getTokenExpirationDate(token);
+  // }
 
 }

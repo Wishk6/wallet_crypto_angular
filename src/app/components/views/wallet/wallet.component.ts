@@ -62,12 +62,12 @@ export class WalletComponent implements OnInit {
   }
 
   setTotalGain() {
-    this.totalGain = Math.ceil(this.cryptoData.data.map((wallet: any) => wallet.gain).reduce((acc,value) => acc + value,0));
+    this.totalGain = Math.ceil(this.cryptoData.data.map((wallet: any) => wallet.gain).reduce((acc: any,value: any) => acc + value,0));
   }
 
   setTotalInvest() {
     this.totalInvest = this.cryptoData.data.map((wallet: any) =>
-      wallet.investInDollars).reduce((acc,value) => acc + value,0);
+      wallet.investInDollars).reduce((acc: any,value: any) => acc + value,0);
   }
 
   deleteWallet(id: string) {

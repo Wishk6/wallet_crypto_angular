@@ -21,7 +21,6 @@ export class ErrorInterceptor implements HttpInterceptor {
 
     return next.handle(request).pipe(
       catchError((error: any) => {
-        console.log(error,"test",error.status)
         if (error.status === 401) {
           if (this.router.url !== '/login') {
             this.router.navigate(['/login']);
@@ -36,7 +35,6 @@ export class ErrorInterceptor implements HttpInterceptor {
           return throwError(error);
         }
         else {
-          this.toastr.error(error.error.message);
           return throwError(error);
         }
       })

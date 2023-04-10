@@ -3,6 +3,7 @@ import {MatTableDataSource,MatTableModule} from '@angular/material/table';
 import {MatInputModule} from "@angular/material/input";
 import {MatIconModule} from "@angular/material/icon";
 import {NgIf} from "@angular/common";
+import {MatToolbarModule} from "@angular/material/toolbar";
 
 @Component({
   selector: 'app-cryptocurrency-table-data',
@@ -12,7 +13,8 @@ import {NgIf} from "@angular/common";
     MatInputModule,
     MatTableModule,
     MatIconModule,
-    NgIf
+    NgIf,
+    MatToolbarModule
   ],
   styleUrls: ['./cryptocurrency-table-data.component.scss']
 })

@@ -1,4 +1,4 @@
-<mat-form-field>
+<mat-form-field color="primary" class="darkMode">
   <mat-label>Filter</mat-label>
   <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
 </mat-form-field>
@@ -18,10 +18,10 @@
   <span class="total-gain">{{ totalInvest + totalGain}} $</span>
 </div>
 
-<table mat-table class="dataTable-container" [dataSource]="dataArray">
+<table  mat-table class="dataTable-container darkMode" [dataSource]="dataArray">
 
   <!-- image Column -->
-  <ng-container matColumnDef="image">
+  <ng-container class="darkMode" matColumnDef="image">
     <th mat-header-cell *matHeaderCellDef></th>
     <td mat-cell *matCellDef="let element">
     <img class="crypto-logo" width="128" height="128" [src]="element.image">
@@ -95,5 +95,4 @@
 
   <mat-error *ngIf="dataArray.data.length === 0">No data found</mat-error>
 </table>
-
 

@@ -1,4 +1,7 @@
-body {
-  background-color: #1e1e1e;
-    color: #fff;
+:root {
+  --background: #1E222D;
+  --primary: #6D6BFF;
+  --secondary:#15FFFF;
+  --border:#787878;
 }
+

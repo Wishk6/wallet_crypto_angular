@@ -1,16 +1,24 @@
 <div class="wallet-wrapper">
   <app-side-nav>
   </app-side-nav>
+
+  <app-theme-toggle></app-theme-toggle>
+
   <div class="component-wrapper">
     <app-add-cryptocurrency-component (cryptoAddedEvent)="getData()">
     </app-add-cryptocurrency-component>
 
-    <div class="last-update">
+    <div class="last-update mat-primary">
       <span>Dernière mise à jour : {{lastUpdate}}</span>
     </div>
 
 
-    <app-cryptocurrency-table-data [dataArray]="cryptoData" [totalGain]="totalGain" [totalInvest]="totalInvest" (actionButtonEvent)="actions($event)" >
+    <app-cryptocurrency-table-data [dataArray]="cryptoData" [totalGain]="totalGain" [totalInvest]="totalInvest"
+                                   (actionButtonEvent)="actions($event)">
     </app-cryptocurrency-table-data>
   </div>
+</div>
+
+<div>
+  test
 </div>

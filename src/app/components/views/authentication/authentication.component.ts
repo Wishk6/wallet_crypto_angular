@@ -16,7 +16,7 @@ export class AuthenticationComponent implements OnInit {
     path: '/assets/towerAnimation.json',
   };
 
-  constructor(private toastr: ToastrService, private authService: AuthenticationService,private walletService : WalletService,private router: Router) {
+  constructor(private toaster: ToastrService, private authService: AuthenticationService,private walletService : WalletService,private router: Router) {
   }
 
   ngOnInit(): void {
@@ -25,20 +25,16 @@ export class AuthenticationComponent implements OnInit {
     }
   }
 
-  animationCreated(animationItem: AnimationItem): void {
-    console.log(animationItem);
-  }
-
   login(email: string,password: string) {
     this.authService.login(email,password).subscribe({
       next: (data) => {
-        this.toastr.success('Hello ' + this.authService.userPseudoValue + ' !');
+        this.toaster.success('Hello ' + this.authService.userPseudoValue + ' !');
         localStorage.setItem('wallet_access_token',data);
         this.walletService.updateCrypto().subscribe()
         this.router.navigateByUrl('/home');
       },
       error: (error) => {
-        this.toastr.error('Error while trying to login, ' + error);
+        this.toaster.error('Error while trying to login, ' + error.error.message);
       }
     });
   }

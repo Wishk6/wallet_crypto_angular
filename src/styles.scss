@@ -1,39 +1,26 @@
-
-// Custom Theming for Angular Material
-// For more information: https://material.angular.io/guide/theming
 @use '@angular/material' as mat;
-// Plus imports for other components in your app.
-@import 'ngx-toastr/toastr';
-// Include the common styles for Angular Material. We include this here so that you only
-// have to load a single css file for Angular Material in your app.
-// Be sure that you only ever include this mixin once!
+
 @include mat.core();
 
-// Define the palettes for your theme using the Material Design palettes available in palette.scss
-// (imported above). For each palette, you can optionally specify a default, lighter, and darker
-// hue. Available color palettes: https://material.io/design/color/
-$cryptoWallet-primary: mat.define-palette(mat.$indigo-palette);
-$cryptoWallet-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+$my-palette: mat.define-palette(mat.$indigo-palette);
+$my-palette2: mat.define-palette(mat.$purple-palette);
+$primary : mat.define-palette(mat.$purple-palette);
+// Apply the light theme only when the user prefers light themes.
+.light-theme {
+  background: mat.get-color-from-palette($my-palette, 500);
+  color: mat.get-color-from-palette($my-palette, '500-contrast');
+}
 
-// The warn palette is optional (defaults to red).
-$cryptoWallet-warn: mat.define-palette(mat.$red-palette);
+.dark-theme {
+  background: mat.get-color-from-palette($my-palette2, 500);
+  color: mat.get-color-from-palette($my-palette2, '500-contrast');
+}
 
-// Create the theme object. A theme consists of configurations for individual
-// theming systems such as "color" or "typography".
-$cryptoWallet-theme: mat.define-light-theme((
-  color: (
-    primary: $cryptoWallet-primary,
-    accent: $cryptoWallet-accent,
-    warn: $cryptoWallet-warn,
-  )
-));
+body {
+  background: var(--background);
+}
 
-// Include theme styles for core and each component used in your app.
-// Alternatively, you can import and @include the theme mixins for each component
-// that you are using.
-@include mat.all-component-themes($cryptoWallet-theme);
-
-/* You can add global styles to this file, and also import other style files */
-
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; background : #282828 }
+:root {
+  --linear-background: linear-gradient(137.37deg, rgba(121, 223, 224, 0.4) 0%, rgba(116, 114, 249, 0.4) 100%);
+  --secondary-text: #B9C6CF;
+}

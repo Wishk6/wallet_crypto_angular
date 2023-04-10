@@ -32,7 +32,6 @@ export class WalletService {
   }
 
   createWallet(wallet: WalletModel) {
-    console.log(wallet)
     return this.http.post<any>(environment.api_url + `wallet`,wallet)
       .pipe(map(data => {
           if (data) {
