@@ -2,9 +2,17 @@
 
 @include mat.core();
 
+@import 'ngx-toastr/toastr';
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap');
+
 $my-palette: mat.define-palette(mat.$indigo-palette);
 $my-palette2: mat.define-palette(mat.$purple-palette);
-$primary : mat.define-palette(mat.$purple-palette);
+$primary: mat.define-palette(mat.$purple-palette);
+
+.mat-toolbar-row, .mat-toolbar-single-row {
+  padding: 0 !important;
+}
+
 // Apply the light theme only when the user prefers light themes.
 .light-theme {
   background: mat.get-color-from-palette($my-palette, 500);
@@ -16,11 +24,40 @@ $primary : mat.define-palette(mat.$purple-palette);
   color: mat.get-color-from-palette($my-palette2, '500-contrast');
 }
 
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 body {
   background: var(--background);
 }
 
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active{
+  -webkit-box-shadow: 0 0 0 30px var(--background) inset !important;
+  -webkit-text-fill-color: var(--primary) !important;
+}
+
 :root {
-  --linear-background: linear-gradient(137.37deg, rgba(121, 223, 224, 0.4) 0%, rgba(116, 114, 249, 0.4) 100%);
+  font-family: 'Inter', sans-serif, Arial, Helvetica, sans-serif;
+  --linear-background: 137.37deg, rgba(121, 223, 224, 0.4) 0%, rgba(116, 114, 249, 0.4) 100%;
   --secondary-text: #B9C6CF;
+}
+
+// svg logo classes
+.s0 {
+  fill: #15ffff
+}
+
+.s2 {
+  fill: #6b68fd
+}
+
+.s3 {
+  fill: #6d6bff
 }

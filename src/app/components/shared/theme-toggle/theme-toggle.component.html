@@ -1,12 +1,7 @@
-<div>
-  <mat-toolbar color="primary" [ngClass]="darkTheme ? 'dark-theme' : 'light-theme'">
-    Angular Dark Mode
+  <mat-toolbar>
     <div class="flex-stretch"></div>
-    <mat-icon class="mr-8">brightness_5</mat-icon>
-    <mat-slide-toggle [checked]="darkTheme" (click)="toggleTheme()" class="mr-8">
+    <mat-slide-toggle  [checked]="darkTheme" (click)="toggleTheme()" class="mr-8">
     </mat-slide-toggle>
-    <mat-icon>bedtime</mat-icon>
   </mat-toolbar>
-</div>
 
 

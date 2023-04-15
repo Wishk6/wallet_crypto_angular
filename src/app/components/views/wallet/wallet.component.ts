@@ -83,7 +83,6 @@ export class WalletComponent implements OnInit {
     if (event.action === 'delete') {
       this.deleteWallet(this.cryptoData.data[event.value].id);
     } else if (event.action === 'edit') {
-      console.log(event.id);
     }
   }
 

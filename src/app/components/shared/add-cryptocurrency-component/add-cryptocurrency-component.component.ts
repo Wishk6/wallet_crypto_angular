@@ -40,7 +40,6 @@ export class AddCryptocurrencyComponentComponent {
     this.walletService.createWallet(cryptoData).subscribe(
       {
         next: (data) => {
-          console.log(data);
           this.cryptoAddedEvent.emit();
         },
         error: (error) => {
