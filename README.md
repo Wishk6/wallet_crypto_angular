@@ -10,22 +10,22 @@
 
 ~
 
-2. [ ] Toaster Service
-3. [ ] ThemeComponent et Servic
-3. [ ] MiddleWare Ping API
+2. [X] Toaster Service
+3. [X] ThemeComponent et Servic
+3. [X] MiddleWare Ping API
 
 ~
 
-1. [ ] Login Component
+1. [X] Login Component
 
 
-2. [ ] SideNav Shared Component
+2. [X] SideNav Shared Component
 
 
 3. [ ] HeaderCrypto Shared Component
 
 
-1. [ ] Composant core PortefeuilleComponent
+1. [X] Composant core PortefeuilleComponent
 
 - Composant shared ajoutCryptoComponent
 - Composant shared GenericDataStatisticsComponent
@@ -34,7 +34,7 @@
 1. [ ] Composant core GraphicsComponent
 
 
-2. [ ] Composant core HomeComponent
+2. [X] Composant core HomeComponent
 
 - Composant shared AnalyseComponent
 - Composant shared GenericDataStatisticsComponent
