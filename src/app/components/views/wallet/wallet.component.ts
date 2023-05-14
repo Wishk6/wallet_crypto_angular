@@ -10,6 +10,7 @@ import {MatTableDataSource} from "@angular/material/table";
 export class WalletComponent implements OnInit {
 
   cryptoData: MatTableDataSource<{
+    favorite: boolean,
     image: string;
     id: string;
     Rang: string;
@@ -29,6 +30,10 @@ export class WalletComponent implements OnInit {
   constructor(private walletService: WalletService) {
   }
 
+  ngOnDestroy(): void {
+    this.cryptoData.disconnect();
+  }
+
   ngOnInit(): void {
     this.getData();
   }
@@ -40,13 +45,16 @@ export class WalletComponent implements OnInit {
           this.lastUpdate = new Date(data[0].CryptoDataModel.last_update).toLocaleString();
 
           this.cryptoData.data = data.map((item) => {
+            // ajouter  à l'item la valeur favorite = true si data.name est présent dans le tableau des favoris dans le localstorage
+
             return {
+              favorite: !!localStorage.getItem('favorites')?.includes(item.CryptoDataModel.name),
               image: item.CryptoDataModel.image,
               id: item.id,
               Rang: item.CryptoDataModel.rank,
               name: item.CryptoDataModel.name,
               price: item.CryptoDataModel.price,
-              priceChange: item.CryptoDataModel.price_change_24,
+              priceChange: item.CryptoDataModel.price_change_24_percentage,
               amount: item.cryptocurrency_amount,
               investInDollars: item.investment_amount,
               boughtPrice: item.investment_amount / item.cryptocurrency_amount,
@@ -83,7 +91,33 @@ export class WalletComponent implements OnInit {
     if (event.action === 'delete') {
       this.deleteWallet(this.cryptoData.data[event.value].id);
     } else if (event.action === 'edit') {
+    } else if (event.action === 'favorite') {
+
+      console.log(event.value)
+
+      // ajouter a un tableau dans le local storage la valeur de l'event
+      const actualStorage = localStorage.getItem('favorites');
+      if (actualStorage) {
+        const actualStorageParsed = JSON.parse(actualStorage);
+        actualStorageParsed.push(event.value);
+        localStorage.setItem('favorites',JSON.stringify(actualStorageParsed));
+      } else {
+        localStorage.setItem('favorites',JSON.stringify([event.value]));
+      }
+      this.getData();
     }
+    else if (event.action ==='remove favorite') {
+      // supprimer de la liste des favoris
+      const actualStorage = localStorage.getItem('favorites');
+      if (actualStorage) {
+        const actualStorageParsed = JSON.parse(actualStorage);
+        const index = actualStorageParsed.indexOf(event.value);
+        actualStorageParsed.splice(index,1);
+        localStorage.setItem('favorites',JSON.stringify(actualStorageParsed));
+      }
+      this.getData();
+    }
+
   }
 
 }

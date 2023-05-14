@@ -33,9 +33,9 @@
       <app-theme-toggle></app-theme-toggle>
 
       <div class="menu-links-wrapper">
-        <a [routerLink]="['/home']" routerLinkActive="activated-link">Menu</a>
-        <a [routerLink]="['/wallet']" routerLinkActive="activated-link">Portefeuille</a>
-        <a [routerLink]="['/graphics']" routerLinkActive="activated-link">Graphiques</a>
+        <a [routerLink]="['/home']" routerLinkActive="activated-link"> <mat-icon>home</mat-icon>Menu</a>
+        <a [routerLink]="['/wallet']" routerLinkActive="activated-link"> <mat-icon>account_balance_wallet</mat-icon> Portefeuille</a>
+        <a [routerLink]="['/graphics']" routerLinkActive="activated-link"><mat-icon>analytics</mat-icon>Graphiques</a>
       </div>
 
       <app-generic-action-button [wantUppercase]="false" [wantMiniFab]="true" [iconName]="'logout'" (click)="logout()">

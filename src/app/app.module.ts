@@ -31,6 +31,7 @@ import {MatButtonModule} from "@angular/material/button";
 import {
   GenericActionButtonComponent
 } from "./components/shared/Generics/generic-action-button/generic-action-button.component";
+import {GenericCardComponent} from "./components/shared/Generics/generic-card/generic-card.component";
 
 export function tokenGetter() {
   return localStorage.getItem("wallet_access_token");
@@ -74,6 +75,7 @@ export function playerFactory() {
     StickerWidgetComponent,
     MatButtonModule,
     GenericActionButtonComponent,
+    GenericCardComponent,
   ],
   providers: [{provide: HTTP_INTERCEPTORS,useClass: ErrorInterceptor,multi: true}],
   bootstrap: [AppComponent]

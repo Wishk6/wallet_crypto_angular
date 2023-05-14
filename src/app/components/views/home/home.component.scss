@@ -1,0 +1,33 @@
+.home-wrapper {
+  display: flex;
+  align-items: center;
+
+  .home-component-wrapper {
+    display: flex;
+    padding: 10px;
+    border-radius: 8px;
+    background: rgba(var(--secondary-background));
+    flex-direction: column;
+    height: fit-content;
+    align-items: flex-start;
+    justify-content: center;
+    color: rgba(var(--primary));
+
+    .cards-wrapper {
+      display: grid;
+      grid-template-columns: repeat(3, auto);
+      gap: 20px;
+      padding: 20px;
+
+      .card-content {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+        padding: 0 10px;
+        color: rgba(var(--primary));
+
+      }
+    }
+  }
+}

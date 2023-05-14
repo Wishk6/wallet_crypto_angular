@@ -1,18 +1,23 @@
-.dataTable-container {
-  min-width: fit-content;
-  border: 1px solid #e0e0e0;
-  border-radius: 4px;
+.overview-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
   padding: 10px;
-
-  .crypto-logo {
-    width: 36px;
-    height: 36px;
-    border-radius: 10rem;
-  }
-
-  .button-action-wrapper {
-    display: flex;
-    gap:10px;
-    margin: 10px;
-  }
+  width: fit-content;
+  background: rgba(var(--secondary-background));
+  border-radius: 8px;
 }
+
+.crypto-logo {
+  width: 36px;
+  height: 36px;
+  border-radius: 10rem;
+}
+
+.button-action-wrapper {
+  display: flex;
+  gap: 10px;
+  margin: 10px;
+}
+

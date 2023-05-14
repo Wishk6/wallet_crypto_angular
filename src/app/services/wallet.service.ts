@@ -16,12 +16,14 @@ export class WalletService {
   updateCrypto() {
     return this.http.patch<any>(environment.api_url + `cryptodata`,{})
       .pipe(map(response => {
-        return response;
+          return response;
         })
       );
   }
 
   getWallets(): Observable<WalletTableDataModel[]> {
+// TODO : Mettre en cache la data du get
+    // shareReplay(1)
     return this.http.get<any>(environment.api_url + `wallet`)
       .pipe(map(data => {
           return data.map((WalletItem: WalletTableDataModel) => {
@@ -29,6 +31,23 @@ export class WalletService {
           })
         }
       ))
+  }
+
+  getFavoriteWallets(): Observable<WalletTableDataModel[]> {
+// TODO : Mettre en cache la data du get
+    // shareReplay(1)
+    return this.http.get<any>(environment.api_url + `wallet`)
+      .pipe(map(data => {
+        return data.map((WalletItem: WalletTableDataModel) => {
+
+          if (localStorage.getItem('favorites')?.includes(WalletItem.CryptoDataModel.name)) {
+            return new WalletTableDataModel(WalletItem.id,WalletItem.cryptocurrency_amount,WalletItem.investment_amount,WalletItem.CryptoDataModel);
+          } else {
+            return;
+          }
+
+        })
+      }))
   }
 
   createWallet(wallet: WalletModel) {

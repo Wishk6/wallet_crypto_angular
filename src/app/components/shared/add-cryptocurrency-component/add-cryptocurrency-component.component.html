@@ -1,15 +1,14 @@
-<div [formGroup]="cryptoFormControl" style="margin: 20px;
-    display: grid;
-    gap: 10px;
-    justify-items: start;
-    justify-content: center;
-" color="primary">
-  <div>
-    <label for="crypto-select">Crypto:</label>
-    <select id="crypto-select" (click)="searchCryptoList()" formControlName="name">
-      <option *ngFor="let crypto of cryptoList" [value]="crypto">{{crypto}}</option>
-    </select>
-  </div>
+<div [formGroup]="cryptoFormControl" class="add-form-wrapper">
+
+  <mat-form-field appearance="fill">
+    <mat-label>Ajouter une cryptomonnaie</mat-label>
+    <mat-select formControlName="name">
+      <mat-option *ngFor="let crypto of cryptoList" [value]="crypto">
+        {{crypto}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
 
   <div>
     <label for="quantity-input">Quantité en Crypto</label>
@@ -18,7 +17,7 @@
 
   <div>
     <label for="investment-input">Investissement en dollars</label>
-    <input id="investment-input" type="number" formControlName="investment_amount"/>
+    <input mat-in id="investment-input" type="number" formControlName="investment_amount"/>
   </div>
 
   <div>
@@ -26,5 +25,6 @@
     <input id="price-input" type="number" formControlName="unitPrice"/>
   </div>
 
-  <button (click)="addCrypto()">Ajouter</button>
+  <app-generic-action-button [label]="'Ajouter'" [wantUppercase]="false"
+                             (click)="addCrypto()"></app-generic-action-button>
 </div>

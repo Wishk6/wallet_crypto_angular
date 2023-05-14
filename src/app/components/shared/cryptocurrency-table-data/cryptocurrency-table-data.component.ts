@@ -2,7 +2,7 @@ import {Component,EventEmitter,Input,Output} from '@angular/core';
 import {MatTableDataSource,MatTableModule} from '@angular/material/table';
 import {MatInputModule} from "@angular/material/input";
 import {MatIconModule} from "@angular/material/icon";
-import {NgIf} from "@angular/common";
+import {DecimalPipe,NgIf} from "@angular/common";
 import {MatToolbarModule} from "@angular/material/toolbar";
 
 @Component({
@@ -14,7 +14,8 @@ import {MatToolbarModule} from "@angular/material/toolbar";
     MatTableModule,
     MatIconModule,
     NgIf,
-    MatToolbarModule
+    MatToolbarModule,
+    DecimalPipe
   ],
   styleUrls: ['./cryptocurrency-table-data.component.scss']
 })
@@ -24,6 +25,7 @@ export class CryptocurrencyTableDataComponent {
   @Input() totalInvest: number = 0;
 
   @Input() dataArray: MatTableDataSource<{
+    favorite: boolean;
     image: string;
     id: string;
     Rang: string;
@@ -41,9 +43,11 @@ export class CryptocurrencyTableDataComponent {
   constructor() {
   }
 
+  ngOnDestroy(): void {
+    this.dataArray.disconnect();
+  }
   actionButton(action : string,indexSelected: number) {
     this.actionButtonEvent.emit({action: action,value: indexSelected});
-    this.actionButtonEvent = new EventEmitter<{ action: string,value: number }>();
   }
 
   applyFilter(event: Event) {

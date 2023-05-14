@@ -4,6 +4,9 @@ import {WalletService} from "../../../services/wallet.service";
 import {FormControl,FormGroup,ReactiveFormsModule,Validators} from "@angular/forms";
 import {NgForOf} from "@angular/common";
 import {ToastrService} from "ngx-toastr";
+import {GenericActionButtonComponent} from "../Generics/generic-action-button/generic-action-button.component";
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatSelectModule} from "@angular/material/select";
 
 @Component({
   selector: 'app-add-cryptocurrency-component',
@@ -11,7 +14,10 @@ import {ToastrService} from "ngx-toastr";
   standalone: true,
   imports: [
     NgForOf,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    GenericActionButtonComponent,
+    MatFormFieldModule,
+    MatSelectModule
   ],
   styleUrls: ['./add-cryptocurrency-component.component.scss']
 })
@@ -31,11 +37,11 @@ export class AddCryptocurrencyComponentComponent {
   }
 
   ngOnInit(): void {
-    console.log(this.cryptoList.length)
+    this.cryptoList= availableCrypto;
   }
 
   searchCryptoList() {
-    this.cryptoList= availableCrypto;
+
   }
 
   addCrypto() {
