@@ -1,3 +1,3 @@
-<div class="theme-toggle-wrapper" (click)="toggleTheme()">
-    <mat-icon color="primary">{{darkTheme ? 'light_mode' : 'dark_mode'}}</mat-icon>
-</div>
+<app-generic-action-button (click)="toggleTheme()" class="theme-toggle-wrapper" [wantMiniFab]="true"
+                           [iconName]="darkTheme ? 'light_mode' : 'dark_mode'">
+</app-generic-action-button>

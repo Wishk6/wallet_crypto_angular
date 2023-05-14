@@ -27,6 +27,10 @@ import {ToastrModule} from 'ngx-toastr';
 import {ThemeToggleComponent} from "./components/shared/theme-toggle/theme-toggle.component";
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {StickerWidgetComponent} from "./components/shared/sticker-widget/sticker-widget.component";
+import {MatButtonModule} from "@angular/material/button";
+import {
+  GenericActionButtonComponent
+} from "./components/shared/Generics/generic-action-button/generic-action-button.component";
 
 export function tokenGetter() {
   return localStorage.getItem("wallet_access_token");
@@ -44,31 +48,33 @@ export function playerFactory() {
     WalletComponent,
     GraphicsComponent,
   ],
-    imports: [
-        SideNavComponent,
-        CryptocurrencyTableDataComponent,
-        AddCryptocurrencyComponentComponent,
-        BrowserModule,
-        ToastrModule.forRoot(), // ToastrModule added
-        AppRoutingModule,
-        LottieModule.forRoot({player: playerFactory}),
-        HttpClientModule,
-        JwtModule.forRoot({
-            config: {
-                tokenGetter: tokenGetter,
-                allowedDomains: environment.allowedDomains,
-                disallowedRoutes: environment.disallowedRoutes,
-            },
-        }),
-        FormsModule,
-        ReactiveFormsModule,
-        MatTableModule,
-        MatInputModule,
-        MatIconModule,
-        ThemeToggleComponent,
-        BrowserAnimationsModule,
-        StickerWidgetComponent,
-    ],
+  imports: [
+    SideNavComponent,
+    CryptocurrencyTableDataComponent,
+    AddCryptocurrencyComponentComponent,
+    BrowserModule,
+    ToastrModule.forRoot(), // ToastrModule added
+    AppRoutingModule,
+    LottieModule.forRoot({player: playerFactory}),
+    HttpClientModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: tokenGetter,
+        allowedDomains: environment.allowedDomains,
+        disallowedRoutes: environment.disallowedRoutes,
+      },
+    }),
+    FormsModule,
+    ReactiveFormsModule,
+    MatTableModule,
+    MatInputModule,
+    MatIconModule,
+    ThemeToggleComponent,
+    BrowserAnimationsModule,
+    StickerWidgetComponent,
+    MatButtonModule,
+    GenericActionButtonComponent,
+  ],
   providers: [{provide: HTTP_INTERCEPTORS,useClass: ErrorInterceptor,multi: true}],
   bootstrap: [AppComponent]
 })

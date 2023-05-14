@@ -1,0 +1,14 @@
+<button *ngIf="wantMiniFab; else flatButton" mat-mini-fab>
+  <div *ngIf="iconName !== ''" class="icon-wrapper">
+    <mat-icon >{{iconName}}</mat-icon>
+    {{wantUppercase ? (label | uppercase) : label}}
+  </div>
+</button>
+
+<ng-template #flatButton>
+  <button mat-flat-button>
+    <mat-icon *ngIf="iconName !== ''">{{iconName}}</mat-icon>
+    {{wantUppercase ? (label | uppercase) : label}}
+  </button>
+</ng-template>
+

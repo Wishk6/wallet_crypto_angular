@@ -16,7 +16,7 @@ import {ToastrService} from "ngx-toastr";
   styleUrls: ['./add-cryptocurrency-component.component.scss']
 })
 export class AddCryptocurrencyComponentComponent {
-  cryptoList: string[] = availableCrypto;
+  cryptoList: string[] = [];
   // créer un objet crypto qui contient le fichier data.ts
   cryptoFormControl: FormGroup = new FormGroup({
     name: new FormControl('',[Validators.required]),
@@ -32,6 +32,10 @@ export class AddCryptocurrencyComponentComponent {
 
   ngOnInit(): void {
     console.log(this.cryptoList.length)
+  }
+
+  searchCryptoList() {
+    this.cryptoList= availableCrypto;
   }
 
   addCrypto() {

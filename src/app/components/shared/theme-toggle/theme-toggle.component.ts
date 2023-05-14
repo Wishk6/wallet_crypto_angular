@@ -5,20 +5,22 @@ import {ReactiveFormsModule} from "@angular/forms";
 import {MatSlideToggleModule} from "@angular/material/slide-toggle";
 import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatIconModule} from "@angular/material/icon";
+import {GenericActionButtonComponent} from "../Generics/generic-action-button/generic-action-button.component";
 
 @Component({
   selector: 'app-theme-toggle',
   standalone: true,
   templateUrl: './theme-toggle.component.html',
-  imports: [
-    NgClass,
-    NgIf,
-    MatSlideToggleModule,
-    MatToolbarModule,
-    ReactiveFormsModule,
-    AsyncPipe,
-    MatIconModule
-  ],
+    imports: [
+        NgClass,
+        NgIf,
+        MatSlideToggleModule,
+        MatToolbarModule,
+        ReactiveFormsModule,
+        AsyncPipe,
+        MatIconModule,
+        GenericActionButtonComponent
+    ],
   styleUrls: ['./theme-toggle.component.scss']
 })
 export class ThemeToggleComponent implements OnInit {

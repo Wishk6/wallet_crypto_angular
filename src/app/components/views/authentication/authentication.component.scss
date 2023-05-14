@@ -1,10 +1,6 @@
 section {
   display: flex;
 
-  button[type="submit"] {
-    color: rgba(var(--background));
-  }
-
   * {
     color: rgba(var(--primary));
   }
@@ -29,7 +25,6 @@ section {
     flex-direction: column;
     background: linear-gradient(var(--linear-background));
     -moz-background-image: linear-gradient(var(--linear-background));
-
 
     .right-wrapper {
       display: flex;
@@ -86,7 +81,7 @@ section {
           border: none;
           outline: none;
           background: transparent;
-          color: var(--text);
+          color: rgba(var(--text));
           font-size: 1rem;
           padding: 10px;
           border-bottom: 2px solid rgba(var(--primary));
@@ -103,37 +98,6 @@ section {
           font-size: 0.9rem;
           transition: color .2s ease, font-size .2s ease;
         }
-      }
-
-      button[type="submit"] {
-        background: rgba(var(--primary));
-        border: none;
-        outline: none;
-        padding: 10px 25px;
-        border-radius: 8px;
-        cursor: pointer;
-        margin-bottom: 20px;
-      }
-
-      button[type="submit"]:focus {
-        border: solid 1px rgb(var(--border));
-      }
-
-      button[type="submit"] h2 {
-        color: rgba(var(--background));
-        font-size: 1.1rem;
-        margin-top:1px;
-        font-weight: 500;
-      }
-
-      button[type="submit"]:hover {
-        transition: background 0.1s ease;
-        background: rgba(var(--primary),0.5);
-      }
-
-      button[type="submit"]:hover h2 {
-        transition: color 0.1s ease;
-        color: rgba(var(--primary));
       }
 
       .signup-redirection {
@@ -166,7 +130,6 @@ section {
           transition: width 0.2s;
         }
       }
-
     }
   }
 
@@ -181,5 +144,4 @@ section {
       display: none;
     }
   }
-
 }

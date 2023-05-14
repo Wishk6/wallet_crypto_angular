@@ -158,13 +158,18 @@
 
         <div>
 
-          <button tabindex="0" *ngIf="!wantToSignUp" (click)="login()" type="submit">
-            <h2>{{'Connexion' | uppercase}}</h2>
-          </button>
+          <app-generic-action-button
+            *ngIf="!wantToSignUp"
+            [label]="'Connexion'"
+            (click)="login()"
+          ></app-generic-action-button>
 
-          <button tabindex="0" *ngIf="wantToSignUp" (click)="signUp()" type="submit">
-            <h2>{{'S\'inscrire' | uppercase}}</h2>
-          </button>
+          <app-generic-action-button
+            *ngIf="wantToSignUp"
+            ngClassCustom="signup-button"
+            [label]="'S\'inscrire'"
+            (click)="signUp()"
+          ></app-generic-action-button>
 
         </div>
 

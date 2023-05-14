@@ -6,7 +6,7 @@
 " color="primary">
   <div>
     <label for="crypto-select">Crypto:</label>
-    <select id="crypto-select" formControlName="name">
+    <select id="crypto-select" (click)="searchCryptoList()" formControlName="name">
       <option *ngFor="let crypto of cryptoList" [value]="crypto">{{crypto}}</option>
     </select>
   </div>

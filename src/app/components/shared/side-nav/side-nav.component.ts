@@ -1,14 +1,17 @@
 import {Component} from '@angular/core';
 import {MatSidenavModule} from "@angular/material/sidenav";
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {RouterLink} from "@angular/router";
+import {RouterLink,RouterLinkActive} from "@angular/router";
 import {AuthenticationService} from "../../../services/authentication.service";
 import {ThemeToggleComponent} from "../theme-toggle/theme-toggle.component";
+import {MatIconModule} from "@angular/material/icon";
+import {MatButtonModule} from "@angular/material/button";
+import {GenericActionButtonComponent} from "../Generics/generic-action-button/generic-action-button.component";
 @Component({
   selector: 'app-side-nav',
   templateUrl: './side-nav.component.html',
   standalone: true,
-    imports: [MatSidenavModule,BrowserAnimationsModule,RouterLink,ThemeToggleComponent],
+  imports: [MatSidenavModule,BrowserAnimationsModule,RouterLink,ThemeToggleComponent,MatIconModule,RouterLinkActive,MatButtonModule,GenericActionButtonComponent],
   styleUrls: ['./side-nav.component.scss']
 })
 export class SideNavComponent {
