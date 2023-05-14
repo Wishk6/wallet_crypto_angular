@@ -1,13 +1,14 @@
 .sidenav-container {
-  height: 100%;
+  height: 100vh;
   position: relative;
   overflow: hidden;
   display: flex;
+  background : var(--linear-background);
   flex-direction: column;
-  background : #282828;
+  width: fit-content;
 
   .menu-container {
     overflow: auto;
-    background : #282828;
+    background : var(--linear-background);
   }
 }

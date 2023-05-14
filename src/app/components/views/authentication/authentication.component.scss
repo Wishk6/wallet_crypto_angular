@@ -2,11 +2,11 @@ section {
   display: flex;
 
   button[type="submit"] {
-    color: var(--background);
+    color: rgba(var(--background));
   }
 
   * {
-    color: var(--primary);
+    color: rgba(var(--primary));
   }
 
   h1 {
@@ -45,9 +45,9 @@ section {
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      background: var(--background);
-      color: var(--text);
-      padding: 20px 30px;
+      background: rgba(var(--background));
+      color: rgba(var(--text));
+      padding: 20px 40px;
       border-radius: 15px;
 
       .form-header {
@@ -57,7 +57,7 @@ section {
       }
 
       .svg-logo {
-        fill: var(--background);
+        fill: rgba(var(--background));
       }
 
       form {
@@ -75,11 +75,11 @@ section {
         align-items: center;
 
         .svg-icon {
-          fill: var(--primary);
+          fill: rgba(var(--primary));
         }
 
         .stroke {
-          stroke: var(--background);
+          stroke: rgba(var(--background));
         }
 
         input {
@@ -87,26 +87,26 @@ section {
           outline: none;
           background: transparent;
           color: var(--text);
-          font-size: 1.1rem;
+          font-size: 1rem;
           padding: 10px;
-          border-bottom: 2px solid var(--primary);
+          border-bottom: 2px solid rgba(var(--primary));
           width: 100%;
           margin: 5px 0;
         }
 
         input::placeholder {
-          color: var(--primary);
+          color: rgba(var(--primary));
         }
 
         input:focus::placeholder {
           color: var(--secondary-text);
           font-size: 0.9rem;
-          transition: all 0.1s ease-in-out;
+          transition: color .2s ease, font-size .2s ease;
         }
       }
 
       button[type="submit"] {
-        background: var(--primary);
+        background: rgba(var(--primary));
         border: none;
         outline: none;
         padding: 10px 25px;
@@ -115,16 +115,25 @@ section {
         margin-bottom: 20px;
       }
 
+      button[type="submit"]:focus {
+        border: solid 1px rgb(var(--border));
+      }
+
       button[type="submit"] h2 {
-        color: var(--background);
+        color: rgba(var(--background));
         font-size: 1.1rem;
         margin-top:1px;
         font-weight: 500;
       }
 
       button[type="submit"]:hover {
-        transition: all 0.2s ease;
-        background: var(--secondary-text);
+        transition: background 0.1s ease;
+        background: rgba(var(--primary),0.5);
+      }
+
+      button[type="submit"]:hover h2 {
+        transition: color 0.1s ease;
+        color: rgba(var(--primary));
       }
 
       .signup-redirection {
@@ -133,12 +142,13 @@ section {
         align-items: center;
         margin: 20px;
 
-        a {
-          color: var(--secondary-text);
+        span {
+          cursor: pointer;
+          color: rgba(var(--secondary-text));
           text-decoration: none;
         }
 
-        a:after {
+        span:after {
           content: "";
           display: block;
           width: 0;
@@ -147,13 +157,13 @@ section {
           bottom: 0;
           right: 0;
           margin: 0 auto;
-          background: var(--primary);
-          transition: width 0.3s;
+          background: rgba(var(--primary));
+          transition: width 0.2s;
         }
 
-        a:hover:after {
+        span:hover:after {
           width: 100%;
-          transition: width 0.3s;
+          transition: width 0.2s;
         }
       }
 

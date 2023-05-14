@@ -16,8 +16,8 @@ import {MatIconModule} from "@angular/material/icon";
     MatSlideToggleModule,
     MatToolbarModule,
     ReactiveFormsModule,
-    MatIconModule,
-    AsyncPipe
+    AsyncPipe,
+    MatIconModule
   ],
   styleUrls: ['./theme-toggle.component.scss']
 })
@@ -43,8 +43,8 @@ export class ThemeToggleComponent implements OnInit {
   }
 
   loadStyle() {
-    let styleName = this.darkTheme ? 'dark-theme.css' : 'light-theme.css';
-    let themeLink = this.document.getElementById('client-theme') as HTMLLinkElement;
+    const styleName = this.darkTheme ? 'dark-theme.css' : 'light-theme.css';
+    const themeLink = this.document.getElementById('client-theme') as HTMLLinkElement;
 
     if (themeLink) {
       themeLink.href = `assets/${styleName}`;

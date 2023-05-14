@@ -32,21 +32,21 @@ $primary: mat.define-palette(mat.$purple-palette);
 }
 
 body {
-  background: var(--background);
+  background: rgba(var(--background));
 }
 
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
-input:-webkit-autofill:active{
-  -webkit-box-shadow: 0 0 0 30px var(--background) inset !important;
-  -webkit-text-fill-color: var(--primary) !important;
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px  rgba(var(--background)) inset !important;
+  -webkit-text-fill-color:  rgba(var(--primary)) !important;
 }
 
 :root {
   font-family: 'Inter', sans-serif, Arial, Helvetica, sans-serif;
   --linear-background: 137.37deg, rgba(121, 223, 224, 0.4) 0%, rgba(116, 114, 249, 0.4) 100%;
-  --secondary-text: #B9C6CF;
+  --secondary-text: 185, 198, 207;
 }
 
 // svg logo classes

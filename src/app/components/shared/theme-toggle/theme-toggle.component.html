@@ -1,7 +1,3 @@
-  <mat-toolbar>
-    <div class="flex-stretch"></div>
-    <mat-slide-toggle  [checked]="darkTheme" (click)="toggleTheme()" class="mr-8">
-    </mat-slide-toggle>
-  </mat-toolbar>
-
-
+<div class="theme-toggle-wrapper" (click)="toggleTheme()">
+    <mat-icon color="primary">{{darkTheme ? 'light_mode' : 'dark_mode'}}</mat-icon>
+</div>

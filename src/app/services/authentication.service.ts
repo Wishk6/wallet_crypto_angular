@@ -25,6 +25,16 @@ export class AuthenticationService {
       }));
   }
 
+  signUp(email: string,pseudo: string,password: string): Observable<string> {
+    return this.http.post<any>(environment.api_url + `user`,{pseudo,email,password})
+      .pipe(map(data => {
+        if (data.token) {
+          this.setUserPseudo(data.token);
+          return data.token;
+        }
+      }));
+  }
+
   logout(): void {
     localStorage.removeItem("wallet_access_token");
     this.router.navigate(['/login']);

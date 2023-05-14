@@ -3,11 +3,12 @@ import {MatSidenavModule} from "@angular/material/sidenav";
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {RouterLink} from "@angular/router";
 import {AuthenticationService} from "../../../services/authentication.service";
+import {ThemeToggleComponent} from "../theme-toggle/theme-toggle.component";
 @Component({
   selector: 'app-side-nav',
   templateUrl: './side-nav.component.html',
   standalone: true,
-  imports: [MatSidenavModule,BrowserAnimationsModule,RouterLink],
+    imports: [MatSidenavModule,BrowserAnimationsModule,RouterLink,ThemeToggleComponent],
   styleUrls: ['./side-nav.component.scss']
 })
 export class SideNavComponent {
