@@ -7,6 +7,7 @@ import {ToastrService} from "ngx-toastr";
 import {GenericActionButtonComponent} from "../Generics/generic-action-button/generic-action-button.component";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatSelectModule} from "@angular/material/select";
+import {MatAutocompleteModule} from "@angular/material/autocomplete";
 
 @Component({
   selector: 'app-add-cryptocurrency-component',
@@ -17,7 +18,8 @@ import {MatSelectModule} from "@angular/material/select";
     ReactiveFormsModule,
     GenericActionButtonComponent,
     MatFormFieldModule,
-    MatSelectModule
+    MatSelectModule,
+    MatAutocompleteModule
   ],
   styleUrls: ['./add-cryptocurrency-component.component.scss']
 })
