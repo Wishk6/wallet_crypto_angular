@@ -1,32 +1,10 @@
-<mat-form-field color="primary">
-  <mat-label>Filter</mat-label>
-  <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
-</mat-form-field>
-
-<div class="overview-wrapper">
-  <div>
-    Valeure investie :
-    <span class="total-gain">{{totalInvest}} $</span>
-  </div>
-
-  <div>
-    Total des gains :
-    <span class="total-gain">{{totalGain}} $</span>
-  </div>
-
-  <div>
-    Total :
-    <span class="total-gain">{{ totalInvest + totalGain}} $</span>
-  </div>
-</div>
-
 <table mat-table class="dataTable-container" [dataSource]="dataArray">
 
   <!-- image Column -->
-  <ng-container  matColumnDef="image">
+  <ng-container matColumnDef="image">
     <th mat-header-cell *matHeaderCellDef></th>
     <td mat-cell *matCellDef="let element">
-      <img class="crypto-logo" width="128" height="128" [src]="element.image">
+      <img class="crypto-logo" width="128" height="128" [src]="element.image" alt="Logo">
     </td>
   </ng-container>
 
@@ -45,23 +23,23 @@
   <!-- Weight Column -->
   <ng-container matColumnDef="prix">
     <th mat-header-cell *matHeaderCellDef> Prix</th>
-    <td mat-cell *matCellDef="let element"> {{element.price | number}} </td>
+    <td mat-cell *matCellDef="let element"> {{element.price | number}} $</td>
   </ng-container>
 
   <!-- Symbol Column -->
   <ng-container matColumnDef="24h">
     <th mat-header-cell *matHeaderCellDef> 24h</th>
-    <td mat-cell *matCellDef="let element"> {{element.priceChange | number}} </td>
+    <td mat-cell *matCellDef="let element"> {{element.priceChange | number}} %</td>
   </ng-container>
 
   <ng-container matColumnDef="solde">
     <th mat-header-cell *matHeaderCellDef> Solde</th>
-    <td mat-cell *matCellDef="let element"> {{element.amount | number}} </td>
+    <td mat-cell *matCellDef="let element"> {{element.amount | number}} $</td>
   </ng-container>
 
   <ng-container matColumnDef="prixAchat">
     <th mat-header-cell *matHeaderCellDef> Prix d'achat</th>
-    <td mat-cell *matCellDef="let element"> {{element.boughtPrice | number}} </td>
+    <td mat-cell *matCellDef="let element"> {{element.boughtPrice | number}} $</td>
   </ng-container>
 
   <ng-container matColumnDef="investDollars">
@@ -71,34 +49,37 @@
 
   <ng-container matColumnDef="gain">
     <th mat-header-cell *matHeaderCellDef> Gain/Perte</th>
-    <td mat-cell *matCellDef="let element"> {{element.gain | number}} </td>
+    <td mat-cell *matCellDef="let element"> {{element.gain | number}} $</td>
   </ng-container>
 
   <ng-container matColumnDef="action">
-    <th mat-header-cell *matHeaderCellDef> Gain/Perte</th>
+    <th mat-header-cell *matHeaderCellDef> Actions</th>
     <td mat-cell *matCellDef="let element; index as index">
-      <div class="button-action-wrapper">
-        <button>
-          <mat-icon *ngIf="!element.favorite" (click)="actionButton('favorite',element.name)" color="primary">favorite
-          </mat-icon>
-          <mat-icon *ngIf="element.favorite" (click)="actionButton('remove favorite',element.name)" color="warn">
-            remove_circle_outline
-          </mat-icon>
-        </button>
-        <button (click)="actionButton('settings',index)">
-          <mat-icon style="color:grey">settings</mat-icon>
-        </button>
-        <button (click)="actionButton('delete',index)">
-          <mat-icon style="color:red">delete</mat-icon>
-        </button>
+
+      <div>
+        <app-generic-action-button [styleObject]="{padding:0,margin:'10px'}" [wantMiniFab]="true"
+                                   [iconName]="element.isFavorite ? 'remove favorite' : 'favorite'"
+                                   [iconStyleObject]="element.isFavorite ? {'color':'red'} : {'color':'rgba(var(--primary))'}"
+                                   (click)="actionButton('favorite',index, element.isFavorite)">
+        </app-generic-action-button>
+        <app-generic-action-button [styleObject]="{padding:0,margin:'10px'}" [wantMiniFab]="true"
+                                   (click)="actionButton('settings',index)"
+                                   [iconName]="'settings'">
+        </app-generic-action-button>
+        <app-generic-action-button [styleObject]="{padding:0,margin:'10px'}" [wantMiniFab]="true"
+                                   (click)="actionButton('delete',index)" [iconName]="'delete'">
+        </app-generic-action-button>
       </div>
+
     </td>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
 
   </ng-container>
 
-  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-
-  <mat-error *ngIf="dataArray.data.length === 0">No data found</mat-error>
 </table>
+
+<div class="error-message" *ngIf="dataArray.data.length === 0">Aucune cryptomonnaie a été trouvée</div>
 

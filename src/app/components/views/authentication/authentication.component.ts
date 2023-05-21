@@ -5,6 +5,7 @@ import {Router} from "@angular/router";
 import {WalletService} from "../../../services/wallet.service";
 import {ToastrService} from 'ngx-toastr';
 import {FormControl,FormGroup,Validators} from "@angular/forms";
+import {UserModel} from "../../../Models/user.model";
 
 @Component({
   selector: 'app-authentication',
@@ -61,11 +62,21 @@ export class AuthenticationComponent implements OnInit {
   login() {
 
     if (this.loginFormGroup.get('email')?.value && this.loginFormGroup.get('password')?.value) {
-      this.authService.login(this.loginFormGroup.get('email')?.value,this.loginFormGroup.get('password')?.value).subscribe({
+      const loginData = {
+        email: this.loginFormGroup.get('email')?.value,
+        password: this.loginFormGroup.get('password')?.value
+      }
+      this.authService.login(loginData).subscribe({
         next: (data) => {
           this.toaster.success('Hello ' + this.authService.userPseudoValue + ' !');
           localStorage.setItem('wallet_access_token',data);
-          this.walletService.updateCrypto().subscribe()
+          this.walletService.updateCrypto().subscribe(
+            {
+              next: () => {
+
+              }
+            }
+          )
           this.router.navigateByUrl('/home');
         },
         error: (error) => {
@@ -79,7 +90,13 @@ export class AuthenticationComponent implements OnInit {
 
   signUp() {
     if (this.signUpFormGroup.get('email')?.value && this.signUpFormGroup.get('pseudo')?.value && this.signUpFormGroup.get('password')?.value) {
-      this.authService.signUp(this.signUpFormGroup.get('email')?.value,this.signUpFormGroup.get('pseudo')?.value,this.signUpFormGroup.get('password')?.value).subscribe({
+      const signUpData = {
+        email: this.signUpFormGroup.get('email')?.value,
+        pseudo: this.signUpFormGroup.get('pseudo')?.value,
+        password: this.signUpFormGroup.get('password')?.value
+      } as UserModel;
+
+      this.authService.signUp(signUpData).subscribe({
         next: (data) => {
           this.toaster.success('Account created !');
     this.wantToSignUp = false;

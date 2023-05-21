@@ -1,46 +1,38 @@
-<div [formGroup]="cryptoFormControl" class="add-form-wrapper">
+<form [formGroup]="cryptoFormControl" >
 
-  <mat-form-field appearance="fill">
-    <mat-label>Ajouter une cryptomonnaie</mat-label>
-    <mat-select formControlName="name">
-      <mat-option *ngFor="let crypto of cryptoList" [value]="crypto">
-        {{crypto}}
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
+  <div>
+    <label for="quantity-input">Ajouter une crypotmonnaie</label>
 
-  <form class="example-form">
-    <input type="text"
-           placeholder="Search for a street"
-           [formControl]="control"
+    <input
+           [formControl]="nameFormControl"
            [matAutocomplete]="auto"
-           class="example-input">
+      type="search"
+    >
     <mat-autocomplete #auto="matAutocomplete">
-      <mat-option *ngFor="let street of filteredStreets | async" [value]="street">
-        {{street}}
+      <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+        {{option}}
       </mat-option>
     </mat-autocomplete>
 
+  </div>
 
-    <div>
-      <label for="quantity-input">Quantité en Crypto</label>
-      <input id="quantity-input" type="number" formControlName="cryptocurrency_amount"/>
-    </div>
+  <div>
+    <label for="quantity-input">Quantité en Crypto</label>
+    <input id="quantity-input" type="number" formControlName="cryptocurrency_amount"/>
+  </div>
 
-    <div>
-      <label for="investment-input">Investissement en dollars</label>
-      <input mat-in id="investment-input" type="number" formControlName="investment_amount"/>
-    </div>
+  <div>
+    <label for="investment-input">Investissement en dollars</label>
+    <input id="investment-input" type="number" formControlName="investment_amount"/>
+  </div>
 
-    <div>
-      <label for="price-input">Prix à l'unité</label>
-      <input id="price-input" type="number" formControlName="unitPrice"/>
-    </div>
+  <div>
+    <label for="price-input">Prix à l'unité</label>
+    <input id="price-input" type="number" formControlName="unitPrice"/>
+  </div>
 
-    <app-generic-action-button [label]="'Ajouter'" [wantUppercase]="false"
-                               (click)="addCrypto()"></app-generic-action-button>
-  </form>
-
-</div>
+  <app-generic-action-button [styleObject]="{margin:'10px'}" [label]="'Ajouter'" [wantUppercase]="false"
+                             (click)="addCrypto()"></app-generic-action-button>
+</form>
 
 

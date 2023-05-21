@@ -15,7 +15,10 @@ mat-drawer-container {
   mat-drawer {
     display: flex;
     overflow: auto;
+    position: fixed;
     background: linear-gradient(var(--linear-background));
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
 
     .mat-drawer-inner-container {
       display: flex;

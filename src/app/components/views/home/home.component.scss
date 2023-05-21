@@ -4,29 +4,31 @@
 
   .home-component-wrapper {
     display: flex;
-    padding: 10px;
+    align-items: center;
+    padding: 20px;
+    max-width: min(60%, 1150px);
     border-radius: 8px;
     background: rgba(var(--secondary-background));
     flex-direction: column;
     height: fit-content;
-    align-items: flex-start;
     justify-content: center;
     color: rgba(var(--primary));
 
     .cards-wrapper {
-      display: grid;
-      grid-template-columns: repeat(3, auto);
-      gap: 20px;
-      padding: 20px;
+      display: flex;
+      gap: 30px;
+      padding: 20px 0;
+      flex-wrap: wrap;
+      justify-content: center;
 
       .card-content {
         display: flex;
         flex-direction: column;
         align-items: flex-start;
         gap: 20px;
-        padding: 0 10px;
+        white-space: nowrap;
+        overflow: hidden;
         color: rgba(var(--primary));
-
       }
     }
   }

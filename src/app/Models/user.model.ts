@@ -1,7 +1,7 @@
 export class UserModel {
   password: string;
   email: string;
-  pseudo: string;
+  pseudo?: string;
 
   constructor(
     password: string,

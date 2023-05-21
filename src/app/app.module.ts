@@ -14,8 +14,8 @@ import {environment} from "../environments/environment";
 import {SideNavComponent} from './components/shared/side-nav/side-nav.component';
 import {ErrorInterceptor} from "./services/error.interceptor";
 import {
-  AddCryptocurrencyComponentComponent
-} from './components/shared/add-cryptocurrency-component/add-cryptocurrency-component.component';
+  AddCryptocurrencyComponent
+} from './components/shared/add-cryptocurrency/add-cryptocurrency.component';
 import {
   CryptocurrencyTableDataComponent
 } from './components/shared/cryptocurrency-table-data/cryptocurrency-table-data.component';
@@ -32,6 +32,7 @@ import {
   GenericActionButtonComponent
 } from "./components/shared/Generics/generic-action-button/generic-action-button.component";
 import {GenericCardComponent} from "./components/shared/Generics/generic-card/generic-card.component";
+import {StatisticsCardComponent} from './components/shared/statistics-card/statistics-card.component';
 
 export function tokenGetter() {
   return localStorage.getItem("wallet_access_token");
@@ -48,11 +49,12 @@ export function playerFactory() {
     HomeComponent,
     WalletComponent,
     GraphicsComponent,
+    StatisticsCardComponent
   ],
   imports: [
     SideNavComponent,
     CryptocurrencyTableDataComponent,
-    AddCryptocurrencyComponentComponent,
+    AddCryptocurrencyComponent,
     BrowserModule,
     ToastrModule.forRoot(), // ToastrModule added
     AppRoutingModule,
@@ -75,7 +77,7 @@ export function playerFactory() {
     StickerWidgetComponent,
     MatButtonModule,
     GenericActionButtonComponent,
-    GenericCardComponent,
+    GenericCardComponent
   ],
   providers: [{provide: HTTP_INTERCEPTORS,useClass: ErrorInterceptor,multi: true}],
   bootstrap: [AppComponent]

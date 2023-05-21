@@ -1,16 +1,18 @@
-import {Component,OnInit} from '@angular/core';
+import {Component,OnDestroy,OnInit} from '@angular/core';
 import {WalletService} from "../../../services/wallet.service";
 import {MatTableDataSource} from "@angular/material/table";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-wallet',
   templateUrl: './wallet.component.html',
   styleUrls: ['./wallet.component.scss']
 })
-export class WalletComponent implements OnInit {
+export class WalletComponent implements OnInit, OnDestroy {
 
+  // data source qui fonctionne comme un Observable
   cryptoData: MatTableDataSource<{
-    favorite: boolean,
+    isFavorite: boolean,
     image: string;
     id: string;
     Rang: string;
@@ -27,7 +29,7 @@ export class WalletComponent implements OnInit {
   totalGain: number = 0;
   totalInvest: number = 0;
 
-  constructor(private walletService: WalletService) {
+  constructor( private walletService: WalletService,private toastService: ToastrService) {
   }
 
   ngOnDestroy(): void {
@@ -38,86 +40,74 @@ export class WalletComponent implements OnInit {
     this.getData();
   }
 
+  /**
+   * Get data from the API and format it
+   */
   getData() {
     this.walletService.getWallets().subscribe(
-      (data) => {
-        if (data.length !== 0) {
-          this.lastUpdate = new Date(data[0].CryptoDataModel.last_update).toLocaleString();
+      {
+        next: (data) => {
+          if (data.length !== 0) {
 
-          this.cryptoData.data = data.map((item) => {
-            // ajouter  à l'item la valeur favorite = true si data.name est présent dans le tableau des favoris dans le localstorage
+            this.lastUpdate = new Date(data[0].CryptoDataModel.last_update).toLocaleString();
+            this.cryptoData.data = data.map((item) => {
+              // mettre l'image en cache
+              return {
+                isFavorite: item.isFavorite,
+                image: item.CryptoDataModel.image,
+                id: item.id,
+                Rang: item.CryptoDataModel.rank,
+                name: item.CryptoDataModel.name,
+                price: item.CryptoDataModel.price,
+                priceChange: item.CryptoDataModel.price_change_24_percentage,
+                amount: item.cryptocurrency_amount,
+                investInDollars: item.investment_amount,
+                boughtPrice: item.investment_amount / item.cryptocurrency_amount,
+                gain: +item.CryptoDataModel.price * item.cryptocurrency_amount - item.investment_amount
+              }
+            })
+          } else {
+            this.cryptoData.data = [];
+          }
+        },
+        error: (error) => {
+          this.toastService.error('Error while getting data, please try again later');
+        }
+      })
 
-            return {
-              favorite: !!localStorage.getItem('favorites')?.includes(item.CryptoDataModel.name),
-              image: item.CryptoDataModel.image,
-              id: item.id,
-              Rang: item.CryptoDataModel.rank,
-              name: item.CryptoDataModel.name,
-              price: item.CryptoDataModel.price,
-              priceChange: item.CryptoDataModel.price_change_24_percentage,
-              amount: item.cryptocurrency_amount,
-              investInDollars: item.investment_amount,
-              boughtPrice: item.investment_amount / item.cryptocurrency_amount,
-              gain: +item.CryptoDataModel.price * item.cryptocurrency_amount - item.investment_amount
-            }
-          })
-          this.setTotalGain();
-          this.setTotalInvest();
-        } else {
-          this.cryptoData.data = [];
+  }
+
+  deleteWallet(id: string) {
+    this.walletService.deleteWallet(+id).subscribe({
+        next: () => {
+          this.getData();
+        },
+        error: (error) => {
+          this.toastService.error('Erreur lors de la suppression du portefeuille');
         }
       })
   }
 
-  setTotalGain() {
-    this.totalGain = Math.ceil(this.cryptoData.data.map((wallet: any) => wallet.gain).reduce((acc: any,value: any) => acc + value,0));
-  }
-
-  setTotalInvest() {
-    this.totalInvest = this.cryptoData.data.map((wallet: any) =>
-      wallet.investInDollars).reduce((acc: any,value: any) => acc + value,0);
-  }
-
-  deleteWallet(id: string) {
-    this.walletService.deleteWallet(+id).subscribe(
-      (data) => {
-        // mettre un message de success
-        this.getData();
-      }
-    )
-  }
-
   actions(event: any) {
+
     if (event.action === 'delete') {
       this.deleteWallet(this.cryptoData.data[event.value].id);
     } else if (event.action === 'edit') {
     } else if (event.action === 'favorite') {
+      this.walletService.updateWallet(+this.cryptoData.data[event.value].id,({isFavorite: !this.cryptoData.data[event.value].isFavorite})).subscribe({
+        next: () => {
+          // compare avec la donnée actuelle pour savoir si on ajoute ou retire des favoris
+          !this.cryptoData.data[event.value].isFavorite ?
+            this.toastService.info('Retiré des favoris') : this.toastService.success('Ajouté aux favoris');
+          this.getData();
+        },
+        error: (error) => {
+          this.toastService.error('Erreur lors de la mise à jour du portefeuille');
+        }
+      })
+    } else if (event.action === 'remove favorite') {
 
-      console.log(event.value)
-
-      // ajouter a un tableau dans le local storage la valeur de l'event
-      const actualStorage = localStorage.getItem('favorites');
-      if (actualStorage) {
-        const actualStorageParsed = JSON.parse(actualStorage);
-        actualStorageParsed.push(event.value);
-        localStorage.setItem('favorites',JSON.stringify(actualStorageParsed));
-      } else {
-        localStorage.setItem('favorites',JSON.stringify([event.value]));
-      }
-      this.getData();
     }
-    else if (event.action ==='remove favorite') {
-      // supprimer de la liste des favoris
-      const actualStorage = localStorage.getItem('favorites');
-      if (actualStorage) {
-        const actualStorageParsed = JSON.parse(actualStorage);
-        const index = actualStorageParsed.indexOf(event.value);
-        actualStorageParsed.splice(index,1);
-        localStorage.setItem('favorites',JSON.stringify(actualStorageParsed));
-      }
-      this.getData();
-    }
-
   }
 
 }

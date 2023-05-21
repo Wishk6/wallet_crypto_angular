@@ -1,4 +1,4 @@
-import {Component,OnInit} from '@angular/core';
+import {Component,OnDestroy,OnInit} from '@angular/core';
 import {WalletService} from "../../../services/wallet.service";
 import {WalletTableDataModel} from "../../../Models/walletTableData.model";
 import {ToastrService} from "ngx-toastr";
@@ -8,31 +8,21 @@ import {ToastrService} from "ngx-toastr";
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, OnDestroy {
 
   constructor(private walletService: WalletService,private toastService: ToastrService) {
   }
 
-  walletArr: WalletTableDataModel[] = [];
+  favoritesArray: WalletTableDataModel[] = [];
 
   ngOnInit(): void {
-    this.getFavorites();
+    this.walletService.getWallets().subscribe(wallets => {
+      this.favoritesArray = wallets.filter(wallet => wallet.isFavorite);
+    });
   }
 
-  getFavorites() {
-    this.walletService.getFavoriteWallets().subscribe(
-      {
-        next: (data) => {
-          // remove undefined valuez
-          this.walletArr = data.filter((item) => {
-            return item !== undefined;
-          });
-        },
-        error: (err) => {
-          console.log(err);
-          this.toastService.error(err,'Error gettting favorites');
-        }
-      });
+  ngOnDestroy(): void {
+
   }
 
 }

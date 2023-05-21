@@ -4,6 +4,7 @@ import {map,Observable} from "rxjs";
 import {JwtService} from "./jwt.service";
 import {Router} from "@angular/router";
 import {environment} from "../../environments/environment";
+import {UserModel} from "../Models/user.model";
 
 @Injectable({
   providedIn: 'root'
@@ -15,8 +16,8 @@ export class AuthenticationService {
   constructor(private http: HttpClient,private jwtService: JwtService,private router: Router) {
   }
 
-  login(email: string,password: string): Observable<string> {
-    return this.http.post<any>(environment.api_url + `authentication/login`,{email,password})
+  login(user: UserModel): Observable<string> {
+    return this.http.post<any>(environment.api_url + `authentication/login`,user)
       .pipe(map(data => {
         if (data.token) {
           this.setUserPseudo(data.token);
@@ -25,8 +26,8 @@ export class AuthenticationService {
       }));
   }
 
-  signUp(email: string,pseudo: string,password: string): Observable<string> {
-    return this.http.post<any>(environment.api_url + `user`,{pseudo,email,password})
+  signUp(user: UserModel): Observable<string> {
+    return this.http.post<any>(environment.api_url + `user`,user)
       .pipe(map(data => {
         if (data.token) {
           this.setUserPseudo(data.token);

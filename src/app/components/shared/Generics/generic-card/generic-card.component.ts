@@ -1,5 +1,6 @@
 import {Component,Input} from '@angular/core';
 import {CommonModule} from '@angular/common';
+
 @Component({
   selector: 'app-generic-card',
   standalone: true,
@@ -16,8 +17,6 @@ export class GenericCardComponent {
   }
 
   ngAfterViewInit() {
-   // analyser l'image et extraire la couleur dominante , met les package qu'il faut, je les importerai
-
-
+    // TODO : analyser l'image et extraire la couleur dominante
   }
 }

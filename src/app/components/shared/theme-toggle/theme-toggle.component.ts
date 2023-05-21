@@ -1,10 +1,5 @@
 import {Component,Inject,OnInit} from '@angular/core';
-import {AsyncPipe,DOCUMENT,NgClass,NgIf} from "@angular/common";
-
-import {ReactiveFormsModule} from "@angular/forms";
-import {MatSlideToggleModule} from "@angular/material/slide-toggle";
-import {MatToolbarModule} from "@angular/material/toolbar";
-import {MatIconModule} from "@angular/material/icon";
+import {DOCUMENT} from "@angular/common";
 import {GenericActionButtonComponent} from "../Generics/generic-action-button/generic-action-button.component";
 
 @Component({
@@ -12,13 +7,6 @@ import {GenericActionButtonComponent} from "../Generics/generic-action-button/ge
   standalone: true,
   templateUrl: './theme-toggle.component.html',
     imports: [
-        NgClass,
-        NgIf,
-        MatSlideToggleModule,
-        MatToolbarModule,
-        ReactiveFormsModule,
-        AsyncPipe,
-        MatIconModule,
         GenericActionButtonComponent
     ],
   styleUrls: ['./theme-toggle.component.scss']

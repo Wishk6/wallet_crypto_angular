@@ -1,7 +1,7 @@
 <mat-drawer-container autosize>
 
   <div>
-    <app-generic-action-button  [wantMiniFab]="true" [iconName]=" drawer.opened ? 'menu_open' : 'menu'" (click)="drawer.toggle()">
+    <app-generic-action-button [styleObject]="{position:'fixed'}"  [wantMiniFab]="true" [iconName]=" drawer.opened ? 'menu_open' : 'menu'" (click)="drawer.toggle()">
     </app-generic-action-button>
   </div>
   <mat-drawer #drawer mode="side" opened>

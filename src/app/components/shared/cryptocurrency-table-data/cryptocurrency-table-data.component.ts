@@ -1,21 +1,20 @@
 import {Component,EventEmitter,Input,Output} from '@angular/core';
 import {MatTableDataSource,MatTableModule} from '@angular/material/table';
-import {MatInputModule} from "@angular/material/input";
-import {MatIconModule} from "@angular/material/icon";
 import {DecimalPipe,NgIf} from "@angular/common";
 import {MatToolbarModule} from "@angular/material/toolbar";
+import {GenericActionButtonComponent} from "../Generics/generic-action-button/generic-action-button.component";
+import {async} from "rxjs";
 
 @Component({
   selector: 'app-cryptocurrency-table-data',
   templateUrl: './cryptocurrency-table-data.component.html',
   standalone: true,
   imports: [
-    MatInputModule,
     MatTableModule,
-    MatIconModule,
     NgIf,
     MatToolbarModule,
-    DecimalPipe
+    DecimalPipe,
+    GenericActionButtonComponent
   ],
   styleUrls: ['./cryptocurrency-table-data.component.scss']
 })
@@ -25,7 +24,7 @@ export class CryptocurrencyTableDataComponent {
   @Input() totalInvest: number = 0;
 
   @Input() dataArray: MatTableDataSource<{
-    favorite: boolean;
+    isFavorite: boolean;
     image: string;
     id: string;
     Rang: string;
@@ -38,16 +37,21 @@ export class CryptocurrencyTableDataComponent {
     gain: number;
   }> = new MatTableDataSource();
 
-  @Output() actionButtonEvent: EventEmitter<{ action: string,value: number }> = new EventEmitter<{ action: string,value: number }>();
-
-  constructor() {
-  }
+  @Output() actionButtonEvent: EventEmitter<{ action: string,value: number }> = new EventEmitter<{
+    action: string,
+    value: number
+  }>();
 
   ngOnDestroy(): void {
     this.dataArray.disconnect();
   }
-  actionButton(action : string,indexSelected: number) {
-    this.actionButtonEvent.emit({action: action,value: indexSelected});
+
+  actionButton(action: string,indexSelected: number,optionData: any = null) {
+    const event = {
+      action: action,value: indexSelected,
+      optionData: optionData !== null ? optionData : null
+    };
+    this.actionButtonEvent.emit(event);
   }
 
   applyFilter(event: Event) {

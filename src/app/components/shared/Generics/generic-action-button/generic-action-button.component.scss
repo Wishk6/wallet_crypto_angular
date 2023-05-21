@@ -13,13 +13,5 @@ button[mat-mini-fab] {
   border-radius: 10rem;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   font-size: 1rem;
-  color: rgba(var(--primary));
-
-  .icon-wrapper {
-    display: flex;
-    border-radius: 10rem;
-    padding: 7px;
-    background: rgba(var(--primary));
-    color: rgba(var(--background));
-  }
 }
+

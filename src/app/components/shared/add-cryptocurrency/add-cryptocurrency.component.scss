@@ -1,12 +1,36 @@
-.add-form-wrapper {
+form {
   margin: 20px;
   background: rgba(var(--secondary-background));
   color: rgba(var(--text));
   border-radius: 8px;
   padding: 20px;
-  display: grid;
-  gap: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
   justify-items: start;
   justify-content: center;
+  align-items: center;
 
+  div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    gap: 20px;
+  }
+
+  input {
+    background: rgba(var(--background));
+    color: rgba(var(--text));
+    border: none;
+    border-radius: 8px;
+    padding: 10px;
+    font-size: 1rem;
+    font-weight: 500;
+    outline: none;
+  }
+
+  button[mat-flat-button] {
+    margin: 10px 0;
+  }
 }

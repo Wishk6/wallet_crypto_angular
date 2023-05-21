@@ -10,7 +10,7 @@
 
       <div class="cards-wrapper">
 
-        <div *ngFor="let wallet of walletArr">
+        <div *ngFor="let wallet of favoritesArray">
           <app-generic-card [image]="wallet.CryptoDataModel.image">
             <div class="card-content">
               <div>{{wallet.CryptoDataModel.name}}</div>
@@ -18,6 +18,16 @@
               <div>{{wallet.CryptoDataModel.price | number}} $</div>
             </div>
           </app-generic-card>
+        </div>
+
+        <div *ngIf="favoritesArray.length === 0">
+          <app-generic-card>
+            <div class="card-content">
+              <div>Aucun favoris</div>
+              <div>Ajoutez des favoris dans la section 'Portefeuille'</div>
+            </div>
+          </app-generic-card>
+
         </div>
 
       </div>

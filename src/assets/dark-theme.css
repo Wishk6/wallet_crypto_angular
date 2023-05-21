@@ -1,8 +1,9 @@
 :root {
   --background: 30, 34, 45;
   --secondary-background: 55, 64, 87;
-  --primary: 250,250,250;
+  --primary: 250, 250, 250;
   --secondary: 21, 255, 255;
   --border: 120, 120, 120;
+  --text: 255, 255, 255;
 }
 
