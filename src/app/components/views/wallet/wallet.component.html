@@ -6,12 +6,19 @@
 
     <div class="component-wrapper">
 
-      <div class="last-update">
-        <span>Dernière mise à jour : {{lastUpdate}}</span>
-      </div>
+      <div class="mini-header-wrapper">
+        <app-add-cryptocurrency>
+        </app-add-cryptocurrency>
 
-      <app-add-cryptocurrency>
-      </app-add-cryptocurrency>
+        <div class="widgets-wrapper">
+          <div class="last-update">
+            <span>Dernière mise à jour : {{lastUpdate}}</span>
+          </div>
+
+          <app-statistics-card>
+          </app-statistics-card>
+        </div>
+      </div>
 
       <app-cryptocurrency-table-data [dataArray]="cryptoData" [totalGain]="totalGain" [totalInvest]="totalInvest"
                                      (actionButtonEvent)="actions($event)">

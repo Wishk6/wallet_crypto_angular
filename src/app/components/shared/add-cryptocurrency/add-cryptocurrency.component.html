@@ -1,7 +1,9 @@
 <form [formGroup]="cryptoFormControl" >
 
+  <label class="title">Ajouter une cryptomonnaie</label>
+
   <div>
-    <label for="quantity-input">Ajouter une crypotmonnaie</label>
+    <label for="quantity-input">Nom</label>
 
     <input
            [formControl]="nameFormControl"
@@ -31,7 +33,7 @@
     <input id="price-input" type="number" formControlName="unitPrice"/>
   </div>
 
-  <app-generic-action-button [styleObject]="{margin:'10px'}" [label]="'Ajouter'" [wantUppercase]="false"
+  <app-generic-action-button [styleObject]="{margin:'10px',background: 'rgba(var(--primary),0.5)',color:'white'}" [label]="'Ajouter'" [wantUppercase]="false"
                              (click)="addCrypto()"></app-generic-action-button>
 </form>
 

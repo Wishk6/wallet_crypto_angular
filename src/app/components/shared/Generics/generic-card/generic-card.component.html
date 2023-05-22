@@ -1,6 +1,6 @@
 
-<div class="card-wrapper">
-  <img *ngIf="image" [src]="image" width="38px" height="38px">
+<div class="card-wrapper" [ngStyle]="getColor()">
+  <img class="img-style" *ngIf="imageData.url !== ''" [src]="imageData.url" width="38px" height="38px" alt="Logo">
   <ng-content>
   </ng-content>
 </div>

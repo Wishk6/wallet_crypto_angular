@@ -11,7 +11,7 @@
       <div class="cards-wrapper">
 
         <div *ngFor="let wallet of favoritesArray">
-          <app-generic-card [image]="wallet.CryptoDataModel.image">
+          <app-generic-card [imageData]="{url : wallet.CryptoDataModel.image, dominantColor : wallet.CryptoDataModel.dominant_color}">
             <div class="card-content">
               <div>{{wallet.CryptoDataModel.name}}</div>
               <div>{{wallet.CryptoDataModel.price_change_24_percentage | number}} %</div>
@@ -22,8 +22,8 @@
 
         <div *ngIf="favoritesArray.length === 0">
           <app-generic-card>
-            <div class="card-content">
-              <div>Aucun favoris</div>
+            <div class="card-content" style="color:rgba(var(--primary))">
+              <div >Aucun favoris</div>
               <div>Ajoutez des favoris dans la section 'Portefeuille'</div>
             </div>
           </app-generic-card>
@@ -31,6 +31,9 @@
         </div>
 
       </div>
+
+      <app-statistics-card>
+      </app-statistics-card>
 
     </div>
 

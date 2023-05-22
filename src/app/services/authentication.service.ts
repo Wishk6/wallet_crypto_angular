@@ -38,6 +38,8 @@ export class AuthenticationService {
 
   logout(): void {
     localStorage.removeItem("wallet_access_token");
+    // remove user from local storage to log user out
+
     this.router.navigate(['/login']);
   }
 

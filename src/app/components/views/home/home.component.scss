@@ -6,13 +6,14 @@
     display: flex;
     align-items: center;
     padding: 20px;
-    max-width: min(60%, 1150px);
+    max-width: min(60%, 900px);
     border-radius: 8px;
     background: rgba(var(--secondary-background));
     flex-direction: column;
     height: fit-content;
     justify-content: center;
     color: rgba(var(--primary));
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 
     .cards-wrapper {
       display: flex;
@@ -26,9 +27,10 @@
         flex-direction: column;
         align-items: flex-start;
         gap: 20px;
+        font-size: 0.9rem;
         white-space: nowrap;
         overflow: hidden;
-        color: rgba(var(--primary));
+        color: white;
       }
     }
   }

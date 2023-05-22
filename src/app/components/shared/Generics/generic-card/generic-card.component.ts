@@ -11,12 +11,19 @@ import {CommonModule} from '@angular/common';
 
 export class GenericCardComponent {
 
-  @Input() image: string = '';
+  @Input() imageData: { url : string, dominantColor : string } = { url : "", dominantColor : "" };
 
   constructor() {
   }
 
-  ngAfterViewInit() {
-    // TODO : analyser l'image et extraire la couleur dominante
+  getColor(): { [key: string]: any } {
+    const colorArray = this.imageData.dominantColor.split(',');
+    const red = Number(colorArray[0]?.trim());
+    const green = Number(colorArray[1]?.trim());
+    const blue = Number(colorArray[2]?.trim());
+    return {
+      background: `linear-gradient(130deg,rgba(${red},${green},${blue},0.8),rgba(116, 114, 249, 0.8))`,
+    }
   }
+
 }
