@@ -11,6 +11,7 @@ import {MatIconModule} from "@angular/material/icon";
   styleUrls: ['./generic-action-button.component.scss']
 })
 export class GenericActionButtonComponent {
+  @Input() name: string = ''
   @Input() label: string = '';
   @Input() disabled: boolean = false;
   @Input() wantUppercase: boolean = true;

@@ -1,0 +1,25 @@
+.generic-wrapper {
+  display: flex;
+  justify-content: center;
+
+  span {
+    padding: 5px 10px;
+    border-radius: 8px;
+  }
+}
+
+.red * {
+  background: rgba(var(--loss), 0.2);
+  color: rgba(var(--loss));
+}
+
+.green * {
+  background: rgba(var(--gain), 0.2);
+  color: rgba(var(--gain));
+}
+
+.white * {
+  background: rgba(var(--background), 0.4);
+  color: rgba(var(--text), 0.8);
+}
+

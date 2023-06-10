@@ -1,4 +1,4 @@
-import {Component,EventEmitter,OnInit,Output} from '@angular/core';
+import {Component,OnInit} from '@angular/core';
 import {availableCrypto} from './data';
 import {WalletService} from "../../../services/wallet.service";
 import {FormControl,FormGroup,ReactiveFormsModule,Validators} from "@angular/forms";
@@ -39,7 +39,6 @@ export class AddCryptocurrencyComponent implements OnInit {
 
   ngOnInit(): void {
     this.options = availableCrypto;
-    console.log(this.options.length);
   }
 
   filteredOptions = this.nameFormControl.valueChanges.pipe(
@@ -63,7 +62,7 @@ export class AddCryptocurrencyComponent implements OnInit {
 
     this.walletService.createWallet(cryptoData).subscribe(
       {
-        next: (data) => {
+        next: () => {
           this.toastr.success('Crypto added successfully');
         },
         error: (error) => {

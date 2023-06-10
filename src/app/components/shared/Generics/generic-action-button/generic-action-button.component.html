@@ -1,11 +1,11 @@
-<button [ngStyle]="styleObject" *ngIf="wantMiniFab; else flatButton" mat-mini-fab>
+<button *ngIf="wantMiniFab; else flatButton" [name]="name" [ngStyle]="styleObject" mat-mini-fab tabindex="0">
   <div *ngIf="iconName !== ''" style="display: flex" [ngStyle]="iconStyleObject">
     <mat-icon>{{iconName}}</mat-icon>
   </div>
 </button>
 
 <ng-template #flatButton>
-  <button [ngStyle]="styleObject" mat-flat-button>
+  <button [name]="name" [ngStyle]="styleObject" mat-flat-button tabindex="0">
     <div *ngIf="iconName !== ''" style="display: flex" [ngStyle]="iconStyleObject">
       <mat-icon>{{iconName}}</mat-icon>
     </div>

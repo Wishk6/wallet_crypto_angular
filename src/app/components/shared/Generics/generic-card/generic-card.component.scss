@@ -3,16 +3,16 @@
   flex-direction: row-reverse;
   justify-content: space-between;
   gap: 50px;
-  width:250px;
-  padding:20px;
-  border-radius: 8Px;
-  background: rgba(var(--background),0.7);
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.25);
+  width: 240px;
+  padding: 20px;
+  border-radius: 8px;
+  background: rgba(var(--background), 0.7);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
 
   .img-style {
     border-radius: 10rem;
-    padding:1px;
-    background:white;
+    padding: 1px;
+    background: white;
   }
 }
 

@@ -18,9 +18,9 @@
     .cards-wrapper {
       display: flex;
       gap: 30px;
-      padding: 20px 0;
+      padding: 20px;
       flex-wrap: wrap;
-      justify-content: center;
+      justify-content: space-evenly;
 
       .card-content {
         display: flex;
@@ -33,5 +33,49 @@
         color: white;
       }
     }
+
+    @media screen and (max-width: 1725px) {
+      .cards-wrapper {
+        justify-content: space-between;
+      }
+    }
+
+    @media screen and (max-width: 1295px) {
+      .cards-wrapper {
+        justify-content: center;
+      }
+    }
+  }
+
+  .statistics-wrapper {
+    display: flex;
+    background: rgba(var(--background));
+    border-radius: 8px;
+    min-height: 275px;
+  }
+
+  .favorites-footer-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+
+    .sticker-wrapper {
+      border-radius: 10px;
+      overflow: hidden;
+      width: 305px;
+      display: flex;
+      height: 275px;
+      justify-content: center;
+    }
+  }
+
+  @media screen and (max-width: 1500px) {
+    .favorites-footer-wrapper {
+      flex-direction: column;
+      justify-content: center;
+    }
   }
 }
+
+

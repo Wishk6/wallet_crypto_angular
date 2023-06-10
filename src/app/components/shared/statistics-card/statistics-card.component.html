@@ -1,16 +1,26 @@
 <div class="overview-wrapper">
+  <h2 class="title">Statistiques</h2>
   <div>
-    Valeure investie :
-    <span class="total-gain">{{totalInvest}} $</span>
+    Valeur investie :
+    <app-generic-value-coloration [sign]="'$'" [value]="totalInvest"
+                                  [wantColors]="false"></app-generic-value-coloration>
+
   </div>
 
   <div>
-    Total des gains :
-    <span class="total-gain">{{totalGain}} $</span>
+    Valeur des gains :
+    <app-generic-value-coloration [sign]="'$'" [value]="totalGain"></app-generic-value-coloration>
   </div>
 
   <div>
-    Total :
-    <span class="total-gain">{{ totalInvest + totalGain}} $</span>
+    Valeur actuelle :
+    <app-generic-value-coloration [sign]="'$'" [value]="totalInvest + totalGain"
+                                  [wantColors]="false"></app-generic-value-coloration>
+  </div>
+
+  <div>
+    Retour sur investissement :
+    <app-generic-value-coloration [sign]="'%'"
+                                  [value]="(totalGain / totalInvest) * 100"></app-generic-value-coloration>
   </div>
 </div>

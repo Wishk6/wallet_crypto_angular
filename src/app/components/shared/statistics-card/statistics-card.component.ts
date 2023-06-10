@@ -1,4 +1,4 @@
-import {Component,Input,OnDestroy,OnInit} from '@angular/core';
+import {Component,OnDestroy,OnInit} from '@angular/core';
 import {WalletService} from "../../../services/wallet.service";
 import {Subscription} from "rxjs";
 import {WalletTableDataModel} from "../../../Models/walletTableData.model";
@@ -31,7 +31,6 @@ export class StatisticsCardComponent implements OnInit, OnDestroy{
   }
 
   setTotalGain() {
-    console.log(this.walletData);
     this.totalGain = Math.ceil(this.walletData.map((wallet: WalletTableDataModel) => {
       // faire un calcul pour chaque wallet
       return +wallet.CryptoDataModel.price * wallet.cryptocurrency_amount - wallet.investment_amount

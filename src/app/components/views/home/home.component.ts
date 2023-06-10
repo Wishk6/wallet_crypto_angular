@@ -1,28 +1,31 @@
 import {Component,OnDestroy,OnInit} from '@angular/core';
 import {WalletService} from "../../../services/wallet.service";
-import {WalletTableDataModel} from "../../../Models/walletTableData.model";
-import {ToastrService} from "ngx-toastr";
+import {Subscription} from "rxjs";
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent implements OnInit, OnDestroy {
 
-  constructor(private walletService: WalletService,private toastService: ToastrService) {
+
+export class HomeComponent implements OnInit,OnDestroy {
+
+  favoritesArraySubscription: Subscription = new Subscription();
+  favoritesArray: any[] = [];
+
+  constructor(private walletService: WalletService) {
   }
 
-  favoritesArray: WalletTableDataModel[] = [];
-
   ngOnInit(): void {
-    this.walletService.getWallets().subscribe(wallets => {
+    this.favoritesArraySubscription = this.walletService.getWallets(true).subscribe(wallets => {
       this.favoritesArray = wallets.filter(wallet => wallet.isFavorite);
     });
   }
 
   ngOnDestroy(): void {
-
+    if (this.favoritesArraySubscription)
+      this.favoritesArraySubscription.unsubscribe();
   }
 
 }

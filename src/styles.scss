@@ -76,7 +76,7 @@ input:-webkit-autofill:active {
 
 :root {
   font-family: 'Inter', sans-serif, Arial, Helvetica, sans-serif;
-  --linear-background: 137.37deg, rgba(121, 223, 224, 0.4) 0%, rgba(116, 114, 249, 0.4) 100%;
+  --linear-background: 137.37deg, #79DFE066 0%, #7472F966 100%;
   --secondary-text: 185, 198, 207;
 }
 
@@ -100,5 +100,6 @@ body { margin: 0; font-family: Inter, "Helvetica Neue", sans-serif; }
 .slide-wrapper {
   display: flex;
   width: 100%;
+  padding: 20px 0;
   justify-content: center;
 }

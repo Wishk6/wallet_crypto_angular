@@ -11,10 +11,13 @@
       <div class="cards-wrapper">
 
         <div *ngFor="let wallet of favoritesArray">
-          <app-generic-card [imageData]="{url : wallet.CryptoDataModel.image, dominantColor : wallet.CryptoDataModel.dominant_color}">
+          <app-generic-card
+            [imageData]="{url : wallet.CryptoDataModel.image, dominantColor : wallet.CryptoDataModel.dominant_color}">
             <div class="card-content">
               <div>{{wallet.CryptoDataModel.name}}</div>
-              <div>{{wallet.CryptoDataModel.price_change_24_percentage | number}} %</div>
+              <app-generic-value-coloration [value]="wallet.CryptoDataModel.price_change_24_percentage"
+                                            [wantColors]="false">
+              </app-generic-value-coloration>
               <div>{{wallet.CryptoDataModel.price | number}} $</div>
             </div>
           </app-generic-card>
@@ -23,7 +26,7 @@
         <div *ngIf="favoritesArray.length === 0">
           <app-generic-card>
             <div class="card-content" style="color:rgba(var(--primary))">
-              <div >Aucun favoris</div>
+              <div>Aucun favoris</div>
               <div>Ajoutez des favoris dans la section 'Portefeuille'</div>
             </div>
           </app-generic-card>
@@ -32,8 +35,29 @@
 
       </div>
 
-      <app-statistics-card>
-      </app-statistics-card>
+      <div class="favorites-footer-wrapper">
+        <app-statistics-card class="statistics-wrapper">
+        </app-statistics-card>
+
+        <app-links-bar>
+        </app-links-bar>
+
+        <app-generic-tv-widget
+          [scriptSrc]="'https://s3.tradingview.com/external-embedding/embed-widget-technical-analysis.js' "
+          [scriptTextObject]="{interval: '1h',
+        width: '345',
+        isTransparent: false,
+        height: '385',
+        symbol: 'BINANCE:BTCUSD',
+        showIntervalTabs: 'true',
+        locale: 'en',
+        colorTheme: 'dark'
+        }"
+          class="sticker-wrapper"
+        >
+        </app-generic-tv-widget>
+
+      </div>
 
     </div>
 

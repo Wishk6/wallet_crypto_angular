@@ -1,17 +1,6 @@
 .wallet-wrapper {
   display: flex;
 
-  .last-update {
-    font-size: 0.8rem;
-    color: rgba(var(--text), 0.3);
-    display: flex;
-    padding: 10px 20px;
-    white-space: nowrap;
-    height:fit-content;
-    border-radius: 8px;
-    background: rgba(var(--secondary-background));
-  }
-
   .component-wrapper {
     display: flex;
     width: fit-content;
@@ -19,23 +8,36 @@
     align-items: center;
     flex-direction: column;
 
-
     .mini-header-wrapper {
       display: flex;
       margin: 0 0 20px 20px;
       width: 100%;
       justify-content: space-between;
 
+      .widgets-wrapper {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        align-items: flex-end;
+        justify-content: space-between;
 
-    .widgets-wrapper {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-      align-items: flex-end;
-      justify-content: space-between;
+        .last-update {
+          font-size: 0.8rem;
+          color: rgba(var(--text), 0.3);
+          display: flex;
+          padding: 10px 20px;
+          white-space: nowrap;
+          height: fit-content;
+          border-radius: 8px;
+          background: rgba(var(--secondary-background));
+        }
+      }
+    }
+
+    .statistics-wrapper {
+      background: rgba(var(--secondary-background));
+      border-radius: 8px;
     }
   }
-  }
-
 }
 

@@ -1,0 +1,3 @@
+<div [ngClass]="'generic-wrapper' + ' ' + getColor()">
+  <span [ngStyle]="wantBackgroundColored ? {}: {background:'none'}"> {{value | number: digitsInfo}} {{sign}}</span>
+</div>

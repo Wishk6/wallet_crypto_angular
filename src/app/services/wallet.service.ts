@@ -27,8 +27,8 @@ export class WalletService {
     return this.http.patch<any>(environment.api_url + `cryptodata`,{})
   }
 
-  getWallets(): Observable<WalletTableDataModel[]> {
-    if (!this.dataFetched) {
+  getWallets(reset: boolean = false): Observable<WalletTableDataModel[]> {
+    if (!this.dataFetched || reset) {
       this.http.get<any>(environment.api_url + 'wallet')
         .pipe(
           map(data => {
@@ -42,6 +42,7 @@ export class WalletService {
           }),
         )
         .subscribe();
+    } else {
     }
 
     return this.walletData$.asObservable().pipe(shareReplay(1));

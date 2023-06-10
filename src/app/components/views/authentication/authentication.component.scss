@@ -25,6 +25,8 @@ section {
     flex-direction: column;
     background: linear-gradient(var(--linear-background));
     -moz-background-image: linear-gradient(var(--linear-background));
+    -webkit-background-image: linear-gradient(var(--linear-background));
+    -o-background-image: linear-gradient(var(--linear-background));
 
     .right-wrapper {
       display: flex;
@@ -81,7 +83,7 @@ section {
           border: none;
           outline: none;
           background: transparent;
-          color: rgba(var(--text));
+          color: rgba(var(--primary), 0.8);
           font-size: 1rem;
           padding: 10px;
           border-bottom: 2px solid rgba(var(--primary));

@@ -56,7 +56,6 @@ export class AuthenticationComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.loginFormGroup.value,"on submit");
   }
 
   login() {
@@ -73,6 +72,7 @@ export class AuthenticationComponent implements OnInit {
           this.walletService.updateCrypto().subscribe(
             {
               next: () => {
+
 
               }
             }
@@ -97,9 +97,9 @@ export class AuthenticationComponent implements OnInit {
       } as UserModel;
 
       this.authService.signUp(signUpData).subscribe({
-        next: (data) => {
+        next: () => {
           this.toaster.success('Account created !');
-    this.wantToSignUp = false;
+          this.wantToSignUp = false;
         },
         error: (error) => {
           this.toaster.error('Error while trying to sign up, ' + error.error.message);

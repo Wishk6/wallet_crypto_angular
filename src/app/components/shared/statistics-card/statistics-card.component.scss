@@ -1,18 +1,24 @@
 .overview-wrapper {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
   gap: 20px;
   padding: 20px;
   width: fit-content;
-  background: rgba(var(--secondary-background));
-  border-radius: 8px;
+  justify-content: space-between;
+
+  .title {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: rgba(var(--text), 0.8);
+    padding: 0 0 10px 0;
+  }
 
   div {
     display: flex;
     align-items: center;
+    justify-content: space-between;
     gap: 10px;
-    font-size: 0.8rem;
+    font-size: 0.9rem;
     color: rgba(var(--text), 0.8);
   }
 }

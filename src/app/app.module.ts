@@ -13,9 +13,7 @@ import player from 'lottie-web';
 import {environment} from "../environments/environment";
 import {SideNavComponent} from './components/shared/side-nav/side-nav.component';
 import {ErrorInterceptor} from "./services/error.interceptor";
-import {
-  AddCryptocurrencyComponent
-} from './components/shared/add-cryptocurrency/add-cryptocurrency.component';
+import {AddCryptocurrencyComponent} from './components/shared/add-cryptocurrency/add-cryptocurrency.component';
 import {
   CryptocurrencyTableDataComponent
 } from './components/shared/cryptocurrency-table-data/cryptocurrency-table-data.component';
@@ -26,13 +24,17 @@ import {MatIconModule} from "@angular/material/icon";
 import {ToastrModule} from 'ngx-toastr';
 import {ThemeToggleComponent} from "./components/shared/theme-toggle/theme-toggle.component";
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {StickerWidgetComponent} from "./components/shared/sticker-widget/sticker-widget.component";
+import {GenericTvWidget} from "./components/shared/Generics/generic-tv-widget/generic-tv-widget.component";
 import {MatButtonModule} from "@angular/material/button";
 import {
   GenericActionButtonComponent
 } from "./components/shared/Generics/generic-action-button/generic-action-button.component";
 import {GenericCardComponent} from "./components/shared/Generics/generic-card/generic-card.component";
 import {StatisticsCardComponent} from './components/shared/statistics-card/statistics-card.component';
+import {
+  GenericValueColorationComponent
+} from './components/shared/Generics/generic-pourcentage-widget/generic-value-coloration.component';
+import {LinksBarComponent} from './components/shared/links-bar/links-bar.component';
 
 export function tokenGetter() {
   return localStorage.getItem("wallet_access_token");
@@ -49,7 +51,8 @@ export function playerFactory() {
     HomeComponent,
     WalletComponent,
     GraphicsComponent,
-    StatisticsCardComponent
+    StatisticsCardComponent,
+    LinksBarComponent
   ],
   imports: [
     SideNavComponent,
@@ -74,10 +77,11 @@ export function playerFactory() {
     MatIconModule,
     ThemeToggleComponent,
     BrowserAnimationsModule,
-    StickerWidgetComponent,
+    GenericTvWidget,
     MatButtonModule,
     GenericActionButtonComponent,
-    GenericCardComponent
+    GenericCardComponent,
+    GenericValueColorationComponent
   ],
   providers: [{provide: HTTP_INTERCEPTORS,useClass: ErrorInterceptor,multi: true}],
   bootstrap: [AppComponent]

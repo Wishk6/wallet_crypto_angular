@@ -12,7 +12,7 @@ form {
   align-items: center;
 
   .title {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     font-weight: 500;
     color: rgba(var(--text), 0.8);
     padding: 0 0 10px 0;
@@ -31,13 +31,10 @@ form {
     color: rgba(var(--text));
     border: none;
     border-radius: 8px;
-    padding: 5px 10px;
+    padding: 10px;
     font-size: 1rem;
     font-weight: 500;
     outline: none;
   }
 
-  button[mat-flat-button] {
-    margin: 10px 0;
-  }
 }

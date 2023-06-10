@@ -3,7 +3,9 @@ import {MatTableDataSource,MatTableModule} from '@angular/material/table';
 import {DecimalPipe,NgIf} from "@angular/common";
 import {MatToolbarModule} from "@angular/material/toolbar";
 import {GenericActionButtonComponent} from "../Generics/generic-action-button/generic-action-button.component";
-import {async} from "rxjs";
+import {
+  GenericValueColorationComponent
+} from "../Generics/generic-pourcentage-widget/generic-value-coloration.component";
 
 @Component({
   selector: 'app-cryptocurrency-table-data',
@@ -14,7 +16,8 @@ import {async} from "rxjs";
     NgIf,
     MatToolbarModule,
     DecimalPipe,
-    GenericActionButtonComponent
+    GenericActionButtonComponent,
+    GenericValueColorationComponent
   ],
   styleUrls: ['./cryptocurrency-table-data.component.scss']
 })
