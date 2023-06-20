@@ -72,8 +72,7 @@ export class AuthenticationComponent implements OnInit {
           this.walletService.updateCrypto().subscribe(
             {
               next: () => {
-
-
+                this.walletService.getWallets().subscribe();
               }
             }
           )

@@ -4,6 +4,35 @@
 
   <div class="slide-wrapper">
 
+    <app-generic-tv-widget [scriptSrc]="'https://s3.tradingview.com/external-embedding/embed-widget-tickers.js'"
+                           [scriptTextObject]="{
+  symbols: [
+  {
+    description: 'Bitcoin',
+    proName: 'BINANCE:BTCUSD'
+  },
+  {
+    description: 'Ethereum',
+    proName: 'BINANCE:ETHUSD'
+  },
+  {
+    description: 'Binance-coin',
+    proName: 'BINANCE:BNBUSD'
+  },
+  {
+    description: 'Apple',
+    proName: 'NASDAQ:AAPL'
+  }
+],
+  colorTheme: actualTheme,
+  isTransparent: false,
+  showSymbolLogo: true,
+  locale: 'en'
+}"
+                           class="tradingview-tickers-wrapper"
+    >
+    </app-generic-tv-widget>
+
     <div class="component-wrapper">
 
       <div class="mini-header-wrapper">

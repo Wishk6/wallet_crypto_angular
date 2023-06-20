@@ -13,7 +13,7 @@ export class HomeComponent implements OnInit,OnDestroy {
 
   favoritesArraySubscription: Subscription = new Subscription();
   favoritesArray: any[] = [];
-
+  actualTheme: string = localStorage.getItem('dark-theme') === 'true' ? 'dark' : 'light';
   constructor(private walletService: WalletService) {
   }
 

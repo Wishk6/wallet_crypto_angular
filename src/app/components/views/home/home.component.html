@@ -4,6 +4,35 @@
 
   <div class="slide-wrapper">
 
+    <app-generic-tv-widget [scriptSrc]="'https://s3.tradingview.com/external-embedding/embed-widget-tickers.js'"
+                           [scriptTextObject]="{
+  symbols: [
+  {
+    description: 'Bitcoin',
+    proName: 'BINANCE:BTCUSD'
+  },
+  {
+    description: 'Ethereum',
+    proName: 'BINANCE:ETHUSD'
+  },
+  {
+    description: 'Binance-coin',
+    proName: 'BINANCE:BNBUSD'
+  },
+  {
+    description: 'Apple',
+    proName: 'NASDAQ:AAPL'
+  }
+],
+  colorTheme: actualTheme,
+  isTransparent: false,
+  showSymbolLogo: true,
+  locale: 'en'
+}"
+                           class="tradingview-tickers-wrapper"
+    >
+    </app-generic-tv-widget>
+
     <div class="home-component-wrapper">
 
       <label>Favoris</label>
@@ -44,15 +73,16 @@
 
         <app-generic-tv-widget
           [scriptSrc]="'https://s3.tradingview.com/external-embedding/embed-widget-technical-analysis.js' "
-          [scriptTextObject]="{interval: '1h',
-        width: '345',
-        isTransparent: false,
-        height: '385',
-        symbol: 'BINANCE:BTCUSD',
-        showIntervalTabs: 'true',
-        locale: 'en',
-        colorTheme: 'dark'
-        }"
+          [scriptTextObject]="{
+                                interval: '1h',
+                                width: '345',
+                                isTransparent: false,
+                                height: '385',
+                                symbol: 'BINANCE:BTCUSD',
+                                showIntervalTabs: 'true',
+                                locale: 'en',
+                                colorTheme:actualTheme
+                                }"
           class="sticker-wrapper"
         >
         </app-generic-tv-widget>

@@ -22,8 +22,8 @@ export class GenericActionButtonComponent {
     display: 'flex',
     borderRadius: '10rem',
     padding: '7px',
-    background: 'rgba(var(--primary),0.6)',
-    color: 'rgba(var(--secondary-background), 0.8)',
+    background: 'rgba(var(--primary),0.5)',
+    color: 'rgba(var(--secondary-background))',
   };
 }
 

@@ -92,12 +92,13 @@ section {
         }
 
         input::placeholder {
-          color: rgba(var(--primary));
+          color: rgba(var(--primary), 0.8);
+          transition: color .2s ease, font-size .2s ease;
         }
 
         input:focus::placeholder {
-          color: var(--secondary-text);
-          font-size: 0.9rem;
+          color: rgba(var(--secondary-text));
+          font-size: 0.8rem;
           transition: color .2s ease, font-size .2s ease;
         }
       }

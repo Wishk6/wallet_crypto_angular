@@ -8,7 +8,7 @@ import {ToastrService} from "ngx-toastr";
   templateUrl: './wallet.component.html',
   styleUrls: ['./wallet.component.scss']
 })
-export class WalletComponent implements OnInit, OnDestroy {
+export class WalletComponent implements OnInit,OnDestroy {
 
   // data source qui fonctionne comme un Observable
   cryptoData: MatTableDataSource<{
@@ -28,8 +28,9 @@ export class WalletComponent implements OnInit, OnDestroy {
   lastUpdate: string = '';
   totalGain: number = 0;
   totalInvest: number = 0;
+  actualTheme: string = localStorage.getItem('dark-theme') === 'true' ? 'dark' : 'light';
 
-  constructor( private walletService: WalletService,private toastService: ToastrService) {
+  constructor(private walletService: WalletService,private toastService: ToastrService) {
   }
 
   ngOnDestroy(): void {
@@ -79,18 +80,20 @@ export class WalletComponent implements OnInit, OnDestroy {
 
   deleteWallet(id: string) {
     this.walletService.deleteWallet(+id).subscribe({
-        next: () => {
-          this.getData();
-        },
-        error: (error) => {
-          this.toastService.error('Erreur lors de la suppression du portefeuille');
-        }
-      })
+      next: () => {
+        this.getData();
+      },
+      error: (error) => {
+        this.toastService.error('Erreur lors de la suppression du portefeuille');
+      }
+    })
   }
 
   actions(event: any) {
 
     if (event.action === 'delete') {
+      // demander confirmation avant de supprimer
+      window.confirm('Are you sure you want to delete this wallet?') &&
       this.deleteWallet(this.cryptoData.data[event.value].id);
     } else if (event.action === 'edit') {
     } else if (event.action === 'favorite') {

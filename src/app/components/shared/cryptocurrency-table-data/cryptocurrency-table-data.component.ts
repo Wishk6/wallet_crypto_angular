@@ -1,4 +1,4 @@
-import {Component,EventEmitter,Input,Output} from '@angular/core';
+import {Component,EventEmitter,Input,OnDestroy,Output} from '@angular/core';
 import {MatTableDataSource,MatTableModule} from '@angular/material/table';
 import {DecimalPipe,NgIf} from "@angular/common";
 import {MatToolbarModule} from "@angular/material/toolbar";
@@ -21,7 +21,7 @@ import {
   ],
   styleUrls: ['./cryptocurrency-table-data.component.scss']
 })
-export class CryptocurrencyTableDataComponent {
+export class CryptocurrencyTableDataComponent implements OnDestroy {
   displayedColumns: string[] = ['image','rang','nom','prix','24h','solde','investDollars','prixAchat','gain','action'];
   @Input() totalGain: number = 0;
   @Input() totalInvest: number = 0;
@@ -55,11 +55,6 @@ export class CryptocurrencyTableDataComponent {
       optionData: optionData !== null ? optionData : null
     };
     this.actionButtonEvent.emit(event);
-  }
-
-  applyFilter(event: Event) {
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.dataArray.filter = filterValue.trim().toLowerCase();
   }
 
 }
